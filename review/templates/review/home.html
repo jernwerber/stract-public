@@ -1,0 +1,69 @@
+{% extends "review/event.html" %}
+{% load i18n %}
+{% load review_extras %}
+
+{# block head #}
+
+{# endblock #}
+{# block jumbo #}
+
+{# endblock #}
+{% block jumbo-show %}
+
+{% endblock %}
+
+{% block content %}
+	<div class="container mb-0">
+	<a id="content-top"></a>
+		<div class="row">
+		<div class="col-sm-4 col-lg-3 bg-light px-0 pb-3 border-right border-left" id="sidebar">
+			<ul class="list-group list-group-flush mb-2 border-bottom">
+			{% if user|is_owner:event.pk %}
+				<li class="list-group-item bg-secondary text-light font-weight-bold">{% trans 'Event admin' %}</li>
+				<a href="{% url 'manage_info' event.pk %}" class="list-group-item">{% trans 'Manage event info' context 'menu item' %}</a>
+				<a href="{% url 'manage_participants' event.pk %}" class="list-group-item">Manage participants</a>
+				<a href="{% url 'manage_submissions' event.pk %}" class="list-group-item">Manage submissions</a>
+				<a href="{% url 'manage_peer_review' event.pk %}" class="list-group-item">Manage peer review</a>
+			{% endif %}
+				<li class="list-group-item bg-secondary text-light font-weight-bold">{% trans 'Participant' %}</li>
+				<a href="{% url 'eventhome' event.pk %}" class="list-group-item">{% trans 'Home' %}</a>
+				<a href="#" class="list-group-item disabled">{% trans 'My profile' %}</a>
+				<a href="{% url 'participant_submissions' event.pk %}" class="list-group-item" >{% trans 'My submissions' %}</a>
+			{% if user|is_peer_reviewer:event.pk %}
+				<li class="list-group-item bg-secondary text-light font-weight-bold">{% trans 'Peer review' %}</li>
+				<li class="list-group-item"><a href="{% url 'peer_review' event.pk %}" class="justify-content-between align-items-center d-flex my-0 py-0">{% trans 'My review assignments' %}{% if user|reviewer_num_incomplete:event.pk > 0 %} <span class="badge badge-primary badge-pill">{{ user|reviewer_num_incomplete:event.pk}}</span>{% endif %}</a>
+				</li>
+			{% endif %}
+			</ul>
+		</div>
+		<div class="col-sm-8 col-lg-9 border-right px-4 pt-3 pb-3" id="main-content">
+			<a id="jumbo-collapse" data-toggle="collapse" href="#main-jumbo" class="btn btn-white float-right"><i class="fas fa-angle-up btn-open"></i><i class="fas fa-angle-down btn-closed"></i></a>
+			{% block message_area %}
+				{% if messages %}
+				{% for m in messages %}
+				<div class="alert alert-info">
+					{{ m|safe }}
+				</div>
+				{% endfor %}
+				{% endif %}
+			{% endblock %}
+			{% block inner %}
+			<h1 class="h2">{% trans 'Announcements' %}</h1>
+			<div class="card mb-4"><div class="card-body"><em>{% trans 'No announcements!' %}</em></div></div>
+			{% if user|is_peer_reviewer:event.pk %}
+			<div class="card">
+				<div class="card-body">
+					<div class="col-md-7 mx-auto">
+					{% blocktrans %}If you are a peer reviewer, please click on the button below or on "My review assignments" in the menu to the left to view and conduct your assigned evaluations. {% endblocktrans %}
+					</div>
+					<div class="col-md-6 mx-auto mt-4">
+					<a class="d-block btn btn-primary" href="{% url 'peer_review' event.pk %}">{% trans "Go to peer review assignments" %} <i class="fas fa-angle-right"></i></a>
+					</div>
+				</div>
+			</div>
+			{% endif %}
+			{% endblock %}
+		</div>
+		</div>
+	</div>
+{% endblock %}

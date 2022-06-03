@@ -1,0 +1,78 @@
+{% extends 'review/manage_peer_review_process.html' %}
+{% load i18n review_extras %}
+
+{% block tab %}
+<div class="alert alert-warning">
+{% blocktrans with num_sub=submission_verdicts.count verdict_name=verdict.text_en %}<strong>{{ num_sub }}</strong> submissions were identified in this process with the final verdict <strong>{{ verdict_name }}</strong>. See below for a preview of the notification message and a list of recipients.{% endblocktrans %}
+</div>
+<div class="card my-4">
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm-3 font-weight-bold">
+			Subject
+			</div>
+			<div class="col-sm-9">
+				{{ template.email_subject }}
+			</div>
+		</div>
+		<hr class="my-3" />
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+		  <li class="nav-item">
+			<a class="nav-link active" id="raw-tab" data-toggle="tab" href="#raw" role="tab" aria-controls="raw" aria-selected="true">Raw message</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" id="rendered-tab" data-toggle="tab" href="#rendered" role="tab" aria-controls="rendered" aria-selected="false">Rendered sample message</a>
+		  </li>
+		</ul>
+		<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active my-3" id="raw" role="tabpanel" aria-labelledby="raw-tab">
+			<div class="row px-1">
+				<div class="col-sm-3 font-weight-bold">
+				Message
+				</div>
+				<div class="col-sm-9">
+					{{ template.email_body_html|safe|linebreaks }}
+				</div>
+			</div>
+		</div>
+		<div class="tab-pane fade my-3" id="rendered" role="tabpanel" aria-labelledby="rendered-tab">
+			<div class="row px-1">
+			<div class="col-sm-3 font-weight-bold">
+				Message
+			</div>
+			<div class="col-sm-9">
+					{{ rendered_message|linebreaks }}
+			</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</div>
+<hr class="my-3" />
+<div class="row justify-content-end">
+	<div class="col-auto">
+		<form method="POST" novalidate>{% csrf_token %}<button type="submit" class="btn btn-primary">{% trans 'Send notifications' %} <i class="far fa-envelope"></i></button></form>
+	</div>
+</div>
+<hr class="my-3" />
+<div class="big-table border-top border-bottom">
+<table class="table table-sm">
+	<thead>
+		<tr>
+			<th><abbr title="Submission ID">SID</abbr></th>
+			<th style="width:45%">Submission Title</th>
+			<th>Corresponding Author</th>
+			<th>&mdash;</th>
+		</tr>
+	</thead>
+	{% for v in submission_verdicts %}
+		<tr>
+			<td>{{ v.submission.pk }}</td>
+			<td><abbr title="{{submission.title}}">{{ v.submission.title|truncatechars:40 }}</abbr></td>
+			<td>{{ v.submission.corresponding_author.participant.user.first_name }} {{ v.submission.corresponding_author.participant.user.last_name }} ({{ v.submission.corresponding_author.participant.user.email }})</td>
+			<td></td>
+		</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

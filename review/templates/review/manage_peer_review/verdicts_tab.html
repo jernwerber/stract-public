@@ -1,0 +1,80 @@
+{% load i18n %}
+{% load review_extras %}
+
+<div class="alert alert-light">
+	<div class="row">
+		<div class="col-auto">
+		<p class="h1 display-3"><i class="fas fa-question-circle"></i></p>
+		</div>
+		<div class="col">
+		<h3>{% trans 'About review verdicts' %}</h3>
+		<p>Review verdicts are assigned by each reviewer for each evaluation that they do. Verdicts are first created event-wide and then can be assigned to specific review processes.</p>
+		</div>
+	</div>
+</div>
+
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+		<th>VID</th>
+		<th style="width:35%">{% trans "Text (English)" %}</th>
+		<th style="width:35%">{% trans "Text (French)" %}</th>	
+		<th>&mdash;</th>		
+	</tr>
+</thead>
+{% for v in event.review.verdicts.all %}
+<tr>
+	<td>
+		{{ v.pk }}
+	</td>
+	<td>
+		{{ v.text_en }}
+	<td>
+		{{ v.text_fr }}
+	</td>
+	<td>
+		<a class="btn btn-sm btn-outline-dark" href="{% url 'manage_peer_review' event_id=event.pk tab='verdict_edit' tab_id=v.pk %}"><i class="far fa-edit"></i></a>
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan='4' class='text-center'>
+	{% trans "No verdicts have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+{% if form %}
+<div class="card">
+<div class="card-body">
+<h5>{% trans 'Create new verdict' %}</h5>
+{% if form.errors %}
+<div class="alert alert-warning">
+{% for e in form.errors %}
+	{{ e.message }} <br />
+{% endfor %}
+{% endif %}
+<form method="POST" novalidate>
+{% csrf_token %}
+<div class="row">
+{% for field in form.visible_fields %}
+<div class="form-group col-6">
+	<strong>{{ field.label_tag }}</strong>
+	{{ field }}
+	{{ field.errors }}
+</div>
+{% endfor %}
+</div>
+<hr class="my-3">
+<div class="row justify-content-between">
+<div class="col-auto">
+<button type="reset" class="btn btn-dark">{% trans 'Clear form' %}</button>
+</div>
+<div class="col-auto">
+<button type="submit" class="btn btn-dark">{% trans "Add verdict" %}</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+{% endif %}

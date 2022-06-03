@@ -1,0 +1,35 @@
+{% extends "review/event.html" %}
+{% load i18n review_extras %}
+
+{% block content %}
+	
+	<div class="container px-4 pb-5 pt-2 border-left border-right">
+		<a name="content-top"></a>
+
+		{% block message_area %}
+				{% if messages %}
+				{% for m in messages %}
+				<div class="alert alert-info">
+					{{ m|safe }}
+				</div>
+				{% endfor %}
+				{% endif %}
+		{% endblock %}
+		{% block inner %}
+			{% if user|user_is_in_event:event.pk %}
+			<div class="row mb-4">
+				<div class="col">
+				<a class="btn btn-light justify-content-between" href="{% url 'eventhome' event.pk %}"><i class="fas fa-chevron-left"></i> {% trans 'Go to participant page' %}</a>
+				</div>
+			</div>
+			{% endif %}
+
+			<h1>{% _ml event 'title' LANGUAGE_CODE %}</h1>
+			<h2>{% _ml event 'subtitle' LANGUAGE_CODE %}</h2>
+			{% autoescape off %}
+			{% _ml event.eventdetails "description" LANGUAGE_CODE %}
+			{% endautoescape %}
+		{% endblock %}
+
+	</div>
+{% endblock %}

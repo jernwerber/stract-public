@@ -1,0 +1,1918 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-11-09 02:06+0000\n"
+"PO-Revision-Date: 2021-11-08 18:18-0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#: review/forms.py:51 review/forms.py:85 review/forms.py:151
+#: review/templates/review/manage_participants.html:18
+#: review/templates/review/manage_peer_review/reviewer_tab.html:42
+msgid "E-mail address"
+msgstr "Adresse électronique"
+
+#: review/forms.py:54 review/forms.py:93
+msgid "Password"
+msgstr "Mot de passe"
+
+#: review/forms.py:65 review/forms.py:157
+#: review/templates/review/manage_participants.html:16
+#: review/templates/review/manage_peer_review/reviewer_tab.html:40
+msgid "First name"
+msgstr "Prénom"
+
+#: review/forms.py:68 review/forms.py:161
+#: review/templates/review/manage_participants.html:17
+#: review/templates/review/manage_peer_review/reviewer_tab.html:41
+msgid "Last name"
+msgstr "Nom"
+
+#: review/forms.py:71
+msgid "Personal pronouns"
+msgstr "Pronoms personnels"
+
+#: review/forms.py:75 review/forms.py:165
+msgid "Institutional affiliation"
+msgstr "Affiliation institutionnelle"
+
+#: review/forms.py:81 review/forms.py:176 review/forms.py:335
+msgid "Language of communication"
+msgstr "Langue de communication"
+
+#: review/forms.py:82 review/forms.py:177
+msgid "English"
+msgstr "Anglais"
+
+#: review/forms.py:82 review/forms.py:177
+msgid "French"
+msgstr "Français"
+
+#: review/forms.py:87
+msgid "This will be your user name"
+msgstr "Ceci sera votre nom d'utilisateur."
+
+#: review/forms.py:89
+msgid "Confirm e-mail address"
+msgstr "Veuillez confirmer votre adresse électronique"
+
+#: review/forms.py:100
+msgid "Confirm password"
+msgstr "Veuillez confirmer votre mot de passe"
+
+#: review/forms.py:122
+msgid "Please confirm that the e-mail addresses match."
+msgstr "Veuillez confirmer que les adresses électronique sont les mêmes."
+
+#: review/forms.py:126
+msgid "Please confirm that the passwords match."
+msgstr "Veuillez confirmer que les mots de passe sont les mêmes."
+
+#: review/forms.py:145
+#: review/templates/review/logged_in_view_submission.html:23
+#: review/templates/review/participant/participant_submission_details.html:35
+msgid "Corresponding author"
+msgstr "Auteur correspondant"
+
+#: review/forms.py:146
+msgid "Create new user"
+msgstr ""
+
+#: review/forms.py:147
+msgid ""
+"Create a new user that will be the corresponding author for this submission "
+"or select one from participants that are already registered"
+msgstr ""
+
+#: review/forms.py:152
+msgid ""
+"A user will be created with this e-mail address as its username. A password "
+"will be automatically generated. All fields can be changed later by the user "
+"except for e-mail address/username."
+msgstr ""
+
+#: review/forms.py:170 review/forms.py:334
+#: review/templates/review/logged_in_view_submission.html:15
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:24
+#: review/templates/review/participant/participant_submission_details.html:27
+msgid "Submission title"
+msgstr "Titre"
+
+#: review/forms.py:183 review/forms.py:336
+#: review/templates/review/logged_in_view_submission.html:38
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:34
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:12
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:72
+#: review/templates/review/participant/participant_submission_details.html:50
+#: review/templates/review/peer_review.html:23
+#: review/templates/review/peer_review.html:46
+#: review/templates/review/peer_review/peer_review_assignment.html:13
+msgid "Submission type"
+msgstr "Type de soumission"
+
+#: review/forms.py:190 review/forms.py:338
+#: review/templates/review/logged_in_view_submission.html:42
+#: review/templates/review/participant/participant_submission_details.html:54
+msgid "Submission strand"
+msgstr "Axe"
+
+#: review/forms.py:191
+msgid "Unspecified"
+msgstr "Non spécifié"
+
+#: review/forms.py:195 review/forms.py:339
+msgid "Authors"
+msgstr "Auteur.e.s"
+
+#: review/forms.py:197
+msgid ""
+"Write the names of <strong>ALL</strong> authors in the order in which you "
+"wish them to appear, <strong>separated by semi-colons ( ; )</strong>.</br>If "
+"the submission has only a single author, you can leave this field blank and "
+"your current information will be used."
+msgstr ""
+"Écrivez les informations de TOUTES les auteures et TOUS les auteurs dans "
+"l'ordre dans lequel vous souhaitez qu'ils apparaissent, séparés par des "
+"points-virgules ( ; ) et en utilisant le format suivant : Nom, prénom "
+"(pronoms), adresse électronique ; Si la soumission n'a qu'une seule auteure "
+"ou qu'un seul auteur, vous pouvez laisser ce champ vide et vos informations "
+"actuelles seront utilisées."
+
+#: review/forms.py:200 review/forms.py:341
+#: review/templates/review/logged_in_view_submission.html:46
+#: review/templates/review/participant/participant_submission_details.html:58
+#: review/templates/review/peer_review/peer_review_assignment.html:21
+msgid "Keywords"
+msgstr "Mots-clés"
+
+#: review/forms.py:206 review/forms.py:400
+#: review/templates/review/logged_in_view_submission.html:53
+#: review/templates/review/logged_in_view_submission.html:65
+#: review/templates/review/participant/participant_submission_details.html:67
+#: review/templates/review/peer_review/peer_review_assignment.html:26
+msgid "Submission text"
+msgstr "Texte"
+
+#: review/forms.py:211 review/forms.py:401
+#: review/templates/review/logged_in_view_submission.html:67
+msgid "References"
+msgstr "Références"
+
+#: review/forms.py:257
+msgid "All user fields must be filled to create a new user"
+msgstr ""
+
+#: review/forms.py:276
+msgid "You must select a strand for your submission."
+msgstr "Vous devez sélectionner un axe pour votre soumission."
+
+#: review/forms.py:284
+msgid "You must select a type for your submission."
+msgstr "Vous devez sélectionner un type de soumission."
+
+#: review/forms.py:287
+msgid ""
+"Your alternate submission type must be different than your primary "
+"submission type or blank."
+msgstr ""
+"Votre autre type de soumission doit être différent de votre type de "
+"soumission principal ou vide."
+
+#: review/forms.py:290
+msgid ""
+"You have already submitted a submission of this type. Please choose a "
+"different submission type."
+msgstr ""
+"Vous avez déjà soumis une soumission de ce type. Veuillez choisir un autre "
+"type de soumission."
+
+#: review/forms.py:329
+msgid ""
+"If the submission has only a single author, you can leave this field blank "
+"and your current information will be used.<br/>Otherwise, write the "
+"information of <strong>ALL</strong> authors in the order in which you wish "
+"them to appear, separated by semi-colons ( ; ), using the following format: "
+"<strong>Last name, first name (pronouns), e-mail address;</strong>"
+msgstr ""
+"Si la soumission n'a qu'une seule auteure ou qu'un seul auteur, vous pouvez "
+"laisser ce champ vide et vos informations actuelles seront utilisées.<br/"
+">Sinon, écrivez les informations de <strong>TOUTES</strong> les auteures et "
+"<strong>TOUS</strong> les auteurs dans l'ordre dans lequel vous souhaitez "
+"qu'ils apparaissent, séparés par des points-virgules ( ; ) et en utilisant "
+"le format suivant : <strong>Nom, prénom (pronoms personnels), adresse "
+"électronique ;</strong>"
+
+#: review/forms.py:330
+msgid ""
+"Please indicate the name(s), <strong>separated by semi-colons ( ; )</"
+"strong>, of anyone who is not an author and who would not be able to serve "
+"as an arms-length peer reviewer, e.g., thesis supervisor(s), committee "
+"member(s)."
+msgstr ""
+"Veuillez indiquer le(s) nom(s), séparé(s) par des points-virgules ( ; ), de "
+"toute personne qui n'est pas un.e auteur.e et qui ne serait pas en mesure "
+"d'agir en tant que réviseur.e, par exemple, votre direction de thèse et les "
+"membres de votre comité."
+
+#: review/forms.py:331
+msgid ""
+"(Optional) Choose another submission type for which you would be willing to "
+"present."
+msgstr ""
+"(Facultatif) Veuillez sélectionner un autre type de soumission pour lequel "
+"vous seriez prêt.e à faire une présentation."
+
+#: review/forms.py:337
+msgid "Alternate submission type"
+msgstr "Type de soumission alternatif"
+
+#: review/forms.py:340
+msgid "Excluded reviewers"
+msgstr "Réviseur.e.s exclu.e.s"
+
+#: review/forms.py:374 review/forms.py:379
+msgid "This field is required."
+msgstr "Ce champs est obligatoire."
+
+#: review/forms.py:376 review/forms.py:381
+#, python-format
+msgid "Your text exceeds the maximum number of characters allowed (%d)."
+msgstr "Votre texte dépasse le nombre de caractères permis (%d)."
+
+#: review/forms.py:389
+#, python-format
+msgid "Maximum of %d characters"
+msgstr "Maximum de %d caractères"
+
+#: review/forms.py:391
+#, python-format
+msgid "%s Maximum of %d characters"
+msgstr "%s Maximum de %d caractères"
+
+#: review/forms.py:414
+msgid "Confirm submission deletion"
+msgstr ""
+
+#: review/forms.py:444 review/forms.py:534 review/forms.py:884
+#: review/forms.py:906
+msgid "At least 1 of the 2 languages must have text."
+msgstr ""
+
+#: review/forms.py:454 review/forms.py:541 review/forms.py:891
+#: review/forms.py:913
+#: review/templates/review/manage_info/manage_info_submissions.html:123
+#: review/templates/review/manage_info/manage_info_submissions.html:168
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:10
+#: review/templates/review/manage_peer_review/create_review_process.html:32
+#: review/templates/review/manage_peer_review/create_review_process.html:60
+#: review/templates/review/manage_peer_review/criteria_tab.html:26
+#: review/templates/review/manage_peer_review/verdicts_tab.html:20
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:41
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:80
+msgid "Text (English)"
+msgstr "Texte (Anglais)"
+
+#: review/forms.py:455 review/forms.py:542 review/forms.py:892
+#: review/forms.py:914
+#: review/templates/review/manage_info/manage_info_submissions.html:124
+#: review/templates/review/manage_info/manage_info_submissions.html:169
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:11
+#: review/templates/review/manage_peer_review/create_review_process.html:33
+#: review/templates/review/manage_peer_review/create_review_process.html:61
+#: review/templates/review/manage_peer_review/criteria_tab.html:27
+#: review/templates/review/manage_peer_review/verdicts_tab.html:21
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:42
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:81
+msgid "Text (French)"
+msgstr "Texte (Français)"
+
+#: review/forms.py:456
+#: review/templates/review/manage_peer_review/criteria_tab.html:28
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:12
+msgid "Criteria type"
+msgstr ""
+
+#: review/forms.py:473
+msgid "Current participants"
+msgstr ""
+
+#: review/forms.py:485
+msgid ""
+"Multiple reviewers can be created using a comma-separated values file (*."
+"csv). The file processor expects a file with one header row and the "
+"following 4 columns, in this order: <strong>last name, first name, "
+"institutional affiliation,</strong> and <strong>e-mail address</strong>."
+msgstr ""
+
+#: review/forms.py:486
+msgid "Bulk add reviewers"
+msgstr ""
+
+#: review/forms.py:493
+msgid "Available criteria"
+msgstr ""
+
+#: review/forms.py:503 review/forms.py:514
+#: review/templates/review/participant/participant_submissions.html:43
+msgid "No submissions found!"
+msgstr "Aucune soumission trouvée!"
+
+#: review/forms.py:504
+msgid "Available submissions"
+msgstr ""
+
+#: review/forms.py:505
+msgid ""
+"Submissions must be added to the process before they can be assigned to "
+"reviewers."
+msgstr ""
+
+#: review/forms.py:515
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:5
+msgid "Submissions available for assignment"
+msgstr ""
+
+#: review/forms.py:520
+msgid "Assign checked submissions to reviewer"
+msgstr ""
+
+#: review/forms.py:594
+msgid ""
+"<strong>Note:</strong> All criteria scores must be set before submitting."
+msgstr ""
+"<strong>Note :</strong> Toutes les notes pour chacun des critères doivent "
+"être attribuées avant la soumission."
+
+#: review/forms.py:598
+msgid "An invalid action was invoked or no action was provided."
+msgstr ""
+
+#: review/forms.py:609
+msgid "Select criteria to include in this review process."
+msgstr ""
+
+#: review/forms.py:619
+msgid "Select verdicts to include in review process."
+msgstr ""
+
+#: review/forms.py:643
+msgid ""
+"You will still be able to change this after the process has been created. "
+"Additional criteria can be created on the \"Criteria\" tab."
+msgstr ""
+
+#: review/forms.py:644
+msgid ""
+"You will still be able to change this after the process has been created. "
+"Additional verdicts can be created on the \"Verdicts\" tab."
+msgstr ""
+
+#: review/forms.py:680
+msgid "Evaluation criteria confirmed"
+msgstr ""
+
+#: review/forms.py:681
+msgid "Review process is active for reviewers"
+msgstr ""
+
+#: review/forms.py:682
+msgid "Evaluations have been released to authors"
+msgstr ""
+
+#: review/forms.py:696
+msgid "Evaluation verdict"
+msgstr "Verdict de l'évaluation"
+
+#: review/forms.py:699
+msgid ""
+"Select your overall impression of the submission from the list of available "
+"verdicts"
+msgstr ""
+"Sélectionnez votre impression générale de la soumission à partir de la liste "
+"des verdicts disponibles."
+
+#: review/forms.py:723
+msgid "Enable submission features"
+msgstr ""
+
+#: review/forms.py:724
+msgid "Enable peer review features"
+msgstr ""
+
+#: review/forms.py:725
+msgid "Add/remove owners"
+msgstr ""
+
+#: review/forms.py:728
+msgid "This must be enabled to change submission settings."
+msgstr ""
+
+#: review/forms.py:729
+msgid ""
+"This enables features such as creating and managing review processes, adding "
+"criteria and verdicts, and assigning peer reviewers."
+msgstr ""
+
+#: review/forms.py:730 review/forms.py:731
+msgid ""
+"A short name or acronym for the event, displayed in the menu bar and in "
+"automatic e-mails."
+msgstr ""
+
+#: review/forms.py:732
+msgid "The start date of the event, displayed in the menu bar."
+msgstr ""
+
+#: review/forms.py:733
+msgid "The end date of the event, displayed in the menu bar."
+msgstr ""
+
+#: review/forms.py:734
+msgid ""
+"Owners have access to all elements of the event, including adding/removing "
+"other owners. <strong>Use with caution.</strong>"
+msgstr ""
+
+#: review/forms.py:803
+msgid "Overall verdict"
+msgstr "Verdict global"
+
+#: review/forms.py:806
+msgid ""
+"Additional verdicts can be added to this list on the criteria/verdicts tab "
+"for this process"
+msgstr ""
+
+#: review/forms.py:828
+msgid ""
+"Use this form to change the submission status of <strong>ALL</strong> "
+"submissions associated with this event."
+msgstr ""
+
+#: review/forms.py:830
+msgid "Submission status changer"
+msgstr ""
+
+#: review/forms.py:839
+msgid "Select reviewers to notify"
+msgstr ""
+
+#: review/forms.py:840
+msgid "Send an e-mail notification to reviewers using this form"
+msgstr ""
+
+#: review/forms.py:846
+msgid "Password reset link"
+msgstr ""
+
+#: review/forms.py:847
+msgid ""
+"This will automatically include a personalized password reset link in the e-"
+"mail"
+msgstr ""
+
+#: review/forms.py:860
+msgid "Available notification templates"
+msgstr ""
+
+#: review/forms.py:872
+msgid "Final verdicts"
+msgstr ""
+
+#: review/forms.py:873
+msgid ""
+"This notification will be sent to the corresponding authors of submissions "
+"with the specified final verdict. You will be able remove individual "
+"recipients on the next page."
+msgstr ""
+
+#: review/forms.py:925
+msgid "Override for accepting submissions"
+msgstr ""
+
+#: review/forms.py:940
+msgid "Accepting submissions"
+msgstr ""
+
+#: review/forms.py:941
+msgid "Submission text max. chars."
+msgstr ""
+
+#: review/forms.py:942
+msgid "Submission references max. chars."
+msgstr ""
+
+#: review/forms.py:943
+msgid "Maximum number of submissions per participant"
+msgstr ""
+
+#: review/forms.py:944
+msgid "Single submission per type"
+msgstr ""
+
+#: review/forms.py:945
+msgid "Format for references (English)"
+msgstr ""
+
+#: review/forms.py:946
+msgid "Format for references (French)"
+msgstr ""
+
+#: review/models.py:41
+msgid "Title (English)"
+msgstr "Titre (Anglais)"
+
+#: review/models.py:42
+msgid "Title (French)"
+msgstr "Titre (Français)"
+
+#: review/models.py:44
+msgid "Subtitle (English)"
+msgstr "Sous titre (Anglais)"
+
+#: review/models.py:45
+msgid "Subtitle (French)"
+msgstr "Sous titre (Français)"
+
+#: review/models.py:47
+msgid "Short name (English)"
+msgstr ""
+
+#: review/models.py:48
+msgid "Short name (French)"
+msgstr ""
+
+#: review/models.py:51
+msgid "URL slug (English)"
+msgstr "URL slug (Anglais)"
+
+#: review/models.py:52 review/models.py:57
+msgid "This will be in the URL of your event. Choose something short."
+msgstr ""
+
+#: review/models.py:56
+msgid "URL slug (French)"
+msgstr "URL slug (Français)"
+
+#: review/models.py:69
+msgid "Contact E-mail Address"
+msgstr ""
+
+#: review/models.py:70
+msgid ""
+"This will be used as the \"Reply to\" address for any password resets or "
+"notifications sent for this event."
+msgstr ""
+
+#: review/models.py:125
+msgid "Event Banner (English)"
+msgstr ""
+
+#: review/models.py:130
+msgid "Event Banner (French)"
+msgstr ""
+
+#: review/models.py:135
+msgid "Website URL (English)"
+msgstr ""
+
+#: review/models.py:139
+msgid "Website URL (French)"
+msgstr ""
+
+#: review/models.py:141
+msgid "Event description (English). HTML is allowed."
+msgstr ""
+
+#: review/models.py:144
+msgid "Event description (French). HTML is allowed."
+msgstr ""
+
+#: review/models.py:147
+msgid "Footer (English). HTML is allowed."
+msgstr ""
+
+#: review/models.py:150
+msgid "Footer (French). HTML is allowed."
+msgstr ""
+
+#: review/models.py:405
+msgid "An internal nickname for the template to be able to identify it"
+msgstr ""
+
+#: review/models.py:484
+msgid "An optional internal name for a review process."
+msgstr ""
+
+#: review/models.py:500
+msgid ""
+"If on/enabled, the criteria used for evaluation are locked for this process. "
+"Setting this option is not necessary but it is <strong>strongly recommended</"
+"strong> once the rubric has been set.  (Default: off)"
+msgstr ""
+
+#: review/models.py:504
+msgid ""
+"If on/enabled, reviewers will be able to submit and edit their reviews. "
+"(Default: off)"
+msgstr ""
+
+#: review/models.py:508
+msgid ""
+"If on/enabled, authors will be able to see the reviews that have been "
+"submitted. (Default: off)"
+msgstr ""
+
+#: review/models.py:638
+msgid "If on/enabled, participants will be able to create new submissions."
+msgstr ""
+
+#: review/models.py:643
+msgid ""
+"This is the maximum number of submissions a single participant is allowed to "
+"submit (0: unlimited)."
+msgstr ""
+
+#: review/models.py:648
+msgid ""
+"If on/enabled, at most one submission per type will be allowed per "
+"participant."
+msgstr ""
+
+#: review/models.py:653
+msgid "If on/enabled, participants must select a submission strand."
+msgstr ""
+
+#: review/models.py:658
+msgid ""
+"This is the maximum length (in characters) that the submission text is "
+"allowed to be."
+msgstr ""
+
+#: review/models.py:663
+msgid ""
+"This is the maximum length (in characters) that the submission references "
+"are allowed to be."
+msgstr ""
+
+#: review/models.py:669
+msgid ""
+"Participants selected here will be able to submit regardless of whether or "
+"not the event is accepting submissions. Use with caution."
+msgstr ""
+
+#: review/models.py:675
+msgid "This text will appear at the top of the References section (English)."
+msgstr ""
+
+#: review/models.py:681
+msgid "This text will appear at the top of the References section (French)."
+msgstr ""
+
+#: review/templates/review/event.html:78
+msgid "Info"
+msgstr ""
+
+#: review/templates/review/event.html:82 review/templates/review/event.html:148
+#: review/templates/review/register.html:8 review/views.py:113
+#: review/views.py:145
+msgid "Register"
+msgstr "S'inscrire"
+
+#: review/templates/review/event.html:85 review/templates/review/event.html:142
+#: review/templates/review/login.html:5 review/views.py:178
+msgid "Login"
+msgstr "Connexion"
+
+#: review/templates/review/event.html:89
+msgid "Logged in as"
+msgstr "Connecté en tant que"
+
+#: review/templates/review/event.html:92 review/templates/review/event.html:132
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: review/templates/review/event.html:129 review/templates/review/wide.html:22
+msgid "Go to participant page"
+msgstr "Aller à la page d'accueil"
+
+#: review/templates/review/event.html:145
+msgid "or"
+msgstr "ou"
+
+#: review/templates/review/home.html:22
+msgid "Event admin"
+msgstr ""
+
+#: review/templates/review/home.html:23
+msgctxt "menu item"
+msgid "Manage event info"
+msgstr ""
+
+#: review/templates/review/home.html:28
+#: review/templates/review/manage_info/manage_info_submissions.html:85
+#: review/templates/review/manage_info/manage_info_tab.html:62
+msgid "Participant"
+msgstr "Participant"
+
+#: review/templates/review/home.html:29
+msgid "Home"
+msgstr "Accueil"
+
+#: review/templates/review/home.html:30
+msgid "My profile"
+msgstr "Mon profil"
+
+#: review/templates/review/home.html:31
+#: review/templates/review/participant/participant_submissions.html:7
+msgid "My submissions"
+msgstr "Mes soumissions"
+
+#: review/templates/review/home.html:33
+msgid "Peer review"
+msgstr "Évaluation par les pairs"
+
+#: review/templates/review/home.html:34
+msgid "My review assignments"
+msgstr "Mes tâches d'évaluation"
+
+#: review/templates/review/home.html:51
+msgid "Announcements"
+msgstr "Annonces"
+
+#: review/templates/review/home.html:52
+msgid "No announcements!"
+msgstr ""
+
+#: review/templates/review/home.html:57
+msgid ""
+"If you are a peer reviewer, please click on the button below or on \"My "
+"review assignments\" in the menu to the left to view and conduct your "
+"assigned evaluations. "
+msgstr ""
+"Si vous êtes un évaluateur, veuillez cliquer sur le bouton ci-dessous ou sur "
+"\"Mes tâches d'évaluation\" dans le menu de gauche pour voir et effectuer "
+"les évaluations qui vous ont été assignées."
+
+#: review/templates/review/home.html:60
+msgid "Go to peer review assignments"
+msgstr "Aller aux tâches d'évaluation par les pairs"
+
+#: review/templates/review/logged_in_view_submission.html:8
+msgid "Back to submissions"
+msgstr ""
+
+#: review/templates/review/logged_in_view_submission.html:11
+#: review/templates/review/participant/participant_submission_details.html:23
+msgid "Submission details"
+msgstr "Détails de la soumission"
+
+#: review/templates/review/logged_in_view_submission.html:19
+#: review/templates/review/manage_submissions.html:23
+#: review/templates/review/participant/participant_submission_details.html:31
+msgid "Language"
+msgstr "Langue"
+
+#: review/templates/review/logged_in_view_submission.html:27
+#: review/templates/review/participant/participant_submission_details.html:39
+msgid "All authors"
+msgstr "Auteur.e.s"
+
+#: review/templates/review/logged_in_view_submission.html:76
+#: review/templates/review/participant/participant_submission_details.html:96
+msgid "Submission evaluations"
+msgstr "Évaluations"
+
+#: review/templates/review/logged_in_view_submission.html:83
+#: review/templates/review/participant/participant_submission_details.html:103
+msgid "Review process"
+msgstr "Processus d'évaluation"
+
+#: review/templates/review/logged_in_view_submission.html:90
+#: review/templates/review/participant/participant_submission_details.html:110
+msgid "Peer review process verdict"
+msgstr "Verdict du processus d'évaluation par les pairs"
+
+#: review/templates/review/logged_in_view_submission.html:96
+#: review/templates/review/participant/participant_submission_details.html:116
+msgid "Review "
+msgstr "Évaluation "
+
+#: review/templates/review/logged_in_view_submission.html:104
+#: review/templates/review/participant/participant_submission_details.html:124
+msgid "Reviewer verdict"
+msgstr "Verdict d'évaluateur"
+
+#: review/templates/review/logged_in_view_submission.html:108
+#: review/templates/review/participant/participant_submission_details.html:128
+msgid "Evaluation details"
+msgstr "Détails de l'évaluation"
+
+#: review/templates/review/logged_in_view_submission.html:114
+#: review/templates/review/manage_peer_review.html:15
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:11
+#: review/templates/review/participant/participant_submission_details.html:134
+#: review/templates/review/peer_review/peer_review_assignment.html:45
+msgid "Criteria"
+msgstr "Critères"
+
+#: review/templates/review/logged_in_view_submission.html:116
+#: review/templates/review/participant/participant_submission_details.html:136
+msgid "Comments"
+msgstr "Commentaires (facultatifs)"
+
+#: review/templates/review/logged_in_view_submission.html:136
+msgid "Delete submission"
+msgstr ""
+
+#: review/templates/review/manage_delete_submission.html:7
+msgid "Go back to submission"
+msgstr ""
+
+#: review/templates/review/manage_info.html:6
+msgid "Manage event info"
+msgstr ""
+
+#: review/templates/review/manage_info.html:12
+msgid "Event info"
+msgstr ""
+
+#: review/templates/review/manage_info.html:15 review/views.py:1396
+#: review/views.py:1415
+msgid "Submission settings"
+msgstr ""
+
+#: review/templates/review/manage_info.html:18
+msgid "Advanced"
+msgstr ""
+
+#: review/templates/review/manage_info.html:21
+msgid "Export data"
+msgstr ""
+
+#: review/templates/review/manage_info.html:24
+msgid "Delete"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_advanced.html:49
+msgid "Name (e-mail address)"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_advanced.html:75
+#: review/templates/review/manage_peer_review_process/confirm_notification_recipients.html:54
+msgid "Send notifications"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_submissions.html:110
+msgid "Submission strands"
+msgstr "Axes"
+
+#: review/templates/review/manage_info/manage_info_submissions.html:145
+msgid "No submission strands have been created!"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_submissions.html:156
+msgid "Submission types"
+msgstr "Types de soumission"
+
+#: review/templates/review/manage_info/manage_info_submissions.html:190
+msgid "No submission types have been created!"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:33
+#: review/utils/defined_choices.py:25
+msgid "No"
+msgstr "Non"
+
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:33
+msgid "have been created!"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:65
+#: review/templates/review/manage_peer_review/create_review_process.html:80
+#: review/templates/review/manage_peer_review/criteria_tab.html:83
+#: review/templates/review/manage_peer_review/verdicts_tab.html:71
+msgid "Clear form"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_submissions_create_item.html:68
+msgid "Add"
+msgstr ""
+
+#: review/templates/review/manage_info/manage_info_tab.html:95
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:45
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:102
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:63
+#: review/templates/review/manage_peer_review_process/overview_tab.html:46
+#: review/templates/review/peer_review/peer_review_assignment.html:84
+msgid "Undo changes"
+msgstr "Annuler les modifications"
+
+#: review/templates/review/manage_info/manage_info_tab.html:98
+msgid "Update event info"
+msgstr ""
+
+#: review/templates/review/manage_participants.html:9
+msgid "Manage participants"
+msgstr ""
+
+#: review/templates/review/manage_participants.html:19
+msgid "Reviewer"
+msgstr ""
+
+#: review/templates/review/manage_participants.html:19
+msgctxt "abbreviation for reviewer"
+msgid "R."
+msgstr "É."
+
+#: review/templates/review/manage_participants.html:20
+msgid "Last login"
+msgstr ""
+
+#: review/templates/review/manage_peer_review.html:6 review/views.py:792
+#: review/views.py:827
+msgid "Manage peer review"
+msgstr ""
+
+#: review/templates/review/manage_peer_review.html:12
+msgid "Processes"
+msgstr ""
+
+#: review/templates/review/manage_peer_review.html:18
+msgid "Verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review.html:21
+msgid "Reviewers"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/create_review_process.html:43
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:57
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:70
+msgid "No criteria have been added to this event!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/create_review_process.html:71
+msgid "No verdicts have been added to this event!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab.html:7
+#: review/templates/review/manage_peer_review/process_tab.html:9
+msgid "Create new review process"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab.html:16
+msgid "About review criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab.html:54
+msgid "No criteria have been created!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab.html:62
+msgid "Create new criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab.html:86
+msgid "Add criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab_edit.html:3
+msgid "Edit criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab_edit.html:23
+#: review/templates/review/manage_peer_review/verdicts_tab_edit.html:23
+msgid "Back"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/criteria_tab_edit.html:26
+#: review/templates/review/manage_peer_review/verdicts_tab_edit.html:26
+msgid "Save changes"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:6
+msgid "Create and manage review processes"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:17
+msgid "PID"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:18
+msgid "Process name"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:19
+msgid "Number of submissions"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:20
+msgid "State"
+msgstr "État"
+
+#: review/templates/review/manage_peer_review/process_tab.html:41
+msgid "No review processes have been created!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:53
+msgid "About review processes"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/process_tab.html:55
+#, python-format
+msgid ""
+"\n"
+"\t\t<p>Review processes are based on the set of review criteria, or a subset "
+"thereof, that have been added for this event. New criteria can be added on "
+"the <a href=\"%(link)s\">Criteria</a> tab. Submissions are connected to one "
+"or more review processes and assignments for reviewers are assigned within "
+"the process. Processes can be selectively accessible to reviewers and "
+"authors. This behaviour is controlled on a specific process' management page "
+"and is reflected, for each process, in the <strong>State</strong> column "
+"below.\n"
+"\t\t<hr>\n"
+"\t\tA review process can be in one of three states: <strong>closed</strong>, "
+"where neither the reviewers nor the submission authors can access the "
+"reviews; <strong>in progress</strong>, where the reviewers have access to "
+"their review assignments; and <strong>released</strong>, where authors can "
+"see the reviews that have been completed for their submissions. A process "
+"where reviewers are still able to submit reviews but authors are also able "
+"to see reviews is considered <strong>released</strong>.\n"
+"\t\t<hr>\n"
+"\t\t<strong>To manage a process, click on its name in the table above.</"
+"strong>\n"
+"\t\t</p>\n"
+"\t\t"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_bulk_upload.html:9
+msgid "Reviewer bulk upload"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_bulk_upload.html:10
+msgid ""
+"You can use this form to create many users at once and add them as reviewers "
+"to this event. Users that already exist will be added as reviewers and users "
+"that do not exist will first be created, then added as reviewers."
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_bulk_upload.html:26
+msgid "Upload and process"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:9
+msgid "About reviewers"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:10
+msgid ""
+"These are the reviewers that are available to be assigned submissions to "
+"review within a review process. Additional reviewers can be added from "
+"existing participants, individually (as new participants), or in bulk (as "
+"new participants)."
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:26
+msgid "Add reviewer"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:43
+msgid "Completed"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:43
+msgid "Com."
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:43
+msgid "Total"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:43
+msgid "Tot."
+msgstr ""
+
+#: review/templates/review/manage_peer_review/reviewer_tab.html:57
+msgid "No participants are assigned as reviewers!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/verdicts_tab.html:10
+msgid "About review verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/verdicts_tab.html:42
+msgid "No verdicts have been created!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/verdicts_tab.html:50
+msgid "Create new verdict"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/verdicts_tab.html:74
+msgid "Add verdict"
+msgstr ""
+
+#: review/templates/review/manage_peer_review/verdicts_tab_edit.html:3
+msgid "Edit verdict"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process.html:6
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:10
+msgid "Manage peer review process"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process.html:17
+msgid "Overview"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process.html:20
+msgid "Process criteria/verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process.html:23
+msgid "Submissions"
+msgstr "Soumissions"
+
+#: review/templates/review/manage_peer_review_process.html:26
+msgid "Assignments"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:9
+#, python-format
+msgid ""
+"\n"
+"<strong>Note: This will add one %(sub_type)s submission to this process.</"
+"strong>\n"
+msgid_plural ""
+"\n"
+"<strong>Note: This will add %(counter)s %(sub_type)s submissions to this "
+"process.</strong>\n"
+msgstr[0] ""
+msgstr[1] ""
+
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:14
+msgid ""
+"\n"
+" You can deselect individual submissions of this type below to prevent them "
+"from being included in this process.\n"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:36
+msgid "Submissions of this type exist for this event"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:44
+msgid "Go back"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/add_submissions_of_type_tab.html:48
+msgid "Add selected"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:5
+msgid "Assign submissions to reviewers"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:15
+msgid "Assign to reviewer"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:33
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:26
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:11
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:71
+#: review/templates/review/manage_submissions.html:20
+#: review/templates/review/participant/participant_submissions.html:16
+#: review/templates/review/peer_review.html:22
+#: review/templates/review/peer_review.html:45
+msgid "Title"
+msgstr "Titre"
+
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:36
+msgid "Assign"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/assignments_tab.html:48
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:26
+msgid "No submissions have been added to this process!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/confirm_notification_recipients.html:6
+#, python-format
+msgid ""
+"<strong>%(num_sub)s</strong> submissions were identified in this process "
+"with the final verdict <strong>%(verdict_name)s</strong>. See below for a "
+"preview of the notification message and a list of recipients."
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/email_notifications.html:5
+msgid "Notify submission authors"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/email_notifications.html:6
+msgid ""
+"This form will send notification e-mails to the corresponding authors of "
+"submissions that have the specified final verdict. Final verdicts for "
+"submissions in this review process can be set on the <strong>Assignments</"
+"strong> tab above."
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/email_notifications.html:26
+msgid "Next"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:7
+msgid "Evaluation criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:21
+msgid "No criteria have been added to this process!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:34
+msgid ""
+"The criteria for this process have been confirmed and cannot be added or "
+"removed until the setting on the \"Overview\" tab has been switched."
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:36
+msgid "Include or remove evaluation criteria"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:75
+msgid "Include or remove review verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:91
+msgid "No verdicts have been created for this event!"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/evaluation_criteria_tab.html:105
+msgid "Update criteria and verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:11
+msgid "Assign final verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:15
+msgid "Go back to review assignment"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:27
+#: review/templates/review/manage_submissions.html:21
+#: review/templates/review/participant/participant_submissions.html:17
+msgid "Type"
+msgstr "Type de soumission"
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:28
+#: review/templates/review/manage_submissions.html:22
+msgid "Strand"
+msgstr "Axe"
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:29
+msgid "Review verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:30
+msgid "Final verdict"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:46
+msgid "Unassigned"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/final_verdicts.html:66
+msgid "Update final verdicts"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/overview_tab.html:6
+msgid "Review process overview"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/overview_tab.html:9
+msgid "Current status:"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/overview_tab.html:49
+msgid "Notify authors"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/overview_tab.html:50
+msgid "Update review process"
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:13
+msgid "Reviews"
+msgstr "Évaluations"
+
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:49
+msgid "Add all of type..."
+msgstr ""
+
+#: review/templates/review/manage_peer_review_process/submissions_tab.html:90
+msgid "Add checked submission(s)"
+msgstr ""
+
+#: review/templates/review/manage_submissions.html:6 review/views.py:588
+msgid "Manage submissions"
+msgstr ""
+
+#: review/templates/review/manage_submissions.html:10
+msgid "Create a submission..."
+msgstr ""
+
+#: review/templates/review/manage_submissions.html:13
+msgid "View submissions as a table"
+msgstr ""
+
+#: review/templates/review/manage_submissions.html:19
+msgid "ID"
+msgstr ""
+
+#: review/templates/review/manage_submissions.html:47
+msgid "No submissions yet!"
+msgstr ""
+
+#: review/templates/review/manage_submissions/manage_submissions_as_table.html:15
+msgid "Submissions table view"
+msgstr ""
+
+#: review/templates/review/manage_submissions/manage_submissions_as_table.html:18
+msgid "Go back to submissions"
+msgstr ""
+
+#: review/templates/review/participant/participant_submission_details.html:9
+#: review/views.py:616
+msgid "View submission"
+msgstr "Voir la soumission"
+
+#: review/templates/review/participant/participant_submission_details.html:13
+msgid "Go back to my submissions"
+msgstr "Retournez à mes soumissions"
+
+#: review/templates/review/participant/participant_submission_details.html:16
+msgid "Submission status"
+msgstr "État de soumission"
+
+#: review/templates/review/participant/participant_submission_details.html:82
+#: review/templates/review/peer_review/peer_review_assignment.html:28
+msgid "Submission references"
+msgstr "Références"
+
+#: review/templates/review/participant/participant_submissions.html:10
+msgid "New submission"
+msgstr "Nouvelle soumission"
+
+#: review/templates/review/participant/participant_submissions.html:18
+msgid "Status"
+msgstr "État"
+
+#: review/templates/review/participant/participant_submissions_form.html:63
+msgid "Reset form"
+msgstr "Réinitialiser le formulaire"
+
+#: review/templates/review/participant/participant_submissions_form.html:66
+msgid "Save"
+msgstr "Enregistrer"
+
+#: review/templates/review/participant/participant_submissions_form.html:67
+msgid "Save and submit"
+msgstr "Enregistrer et soumettre"
+
+#: review/templates/review/participant/participant_submissions_form.html:78
+#: review/templates/review/peer_review/peer_review_assignment.html:106
+msgid "You will lose any unsaved changes if you leave this page."
+msgstr ""
+
+#: review/templates/review/peer_review.html:6
+#: review/templates/review/peer_review/peer_review_assignment.html:7
+msgid "My reviews"
+msgstr "Mes évaluations"
+
+#: review/templates/review/peer_review.html:13
+msgid "Reviews assigned"
+msgstr "Évaluations assignées"
+
+#: review/templates/review/peer_review.html:15
+msgid "Reviews completed"
+msgstr "Évaluations terminées"
+
+#: review/templates/review/peer_review.html:31
+msgid "Review"
+msgstr "Évaluation"
+
+#: review/templates/review/peer_review.html:36
+msgid "No submissions have been assigned for review!"
+msgstr ""
+
+#: review/templates/review/peer_review.html:51
+msgid "No review assignments found!"
+msgstr ""
+
+#: review/templates/review/peer_review/peer_review_assignment.html:8
+msgid "Return to assignments"
+msgstr ""
+
+#: review/templates/review/peer_review/peer_review_assignment.html:17
+msgid "Submission language"
+msgstr "Langue"
+
+#: review/templates/review/peer_review/peer_review_assignment.html:33
+msgid "Evaluation grid"
+msgstr "Grille d'évaluation"
+
+#: review/templates/review/peer_review/peer_review_assignment.html:47
+msgid "Comments (optional)"
+msgstr "Commentaires (facultatifs)"
+
+#: review/templates/review/peer_review/peer_review_assignment.html:87
+msgid "Save evaluation"
+msgstr "Sauvegarder l'évaluation"
+
+#: review/templates/review/peer_review/peer_review_assignment.html:88
+msgid "Save and submit evaluation"
+msgstr "Sauvegarder et soumettre l'évaluation"
+
+#: review/templates/review/registration/login_form.html:7
+msgid "Forgot your password?"
+msgstr "Oublié votre mot de passe ?"
+
+#: review/templates/review/registration/password_reset_done.html:10
+msgid ""
+"<strong>A password reset e-mail has been sent.</strong> If you do not "
+"receive an e-mail within 30 minutes, please submit another reset request. "
+"Check your spam folder to make sure that you are not blocking e-mails from "
+"<strong>no-reply@cadem.io</strong>"
+msgstr ""
+"<strong>Un courriel de réinitialisation de mot de passe a été envoyé.</"
+"strong> Si vous ne recevez pas de courriel dans un délai de 30 minutes, "
+"essayez à nouveau, ensuite vérifiez votre dossier des courriels indésirables "
+"et assurez-vous de ne bloquer l’adresse provenant de <strong>no-reply@cadem."
+"io</strong>."
+
+#: review/templates/review/registration/password_reset_html_email.html:3
+msgid "Someone asked for password reset for email"
+msgstr ""
+
+#: review/templates/review/registration/password_reset_subject.txt:2
+#, python-format
+msgid "%(short)s: Password reset request"
+msgstr "%(short)s: Demande de réinitialisation du mot de passe"
+
+#: review/templates/review/snippet/home_jumbo.html:6
+msgid ""
+"A simple, powerful, and flexible management platform for academic events and "
+"conferences"
+msgstr ""
+
+#: review/templates/review/snippet/home_navbar.html:13
+msgid "Create event"
+msgstr ""
+
+#: review/templates/review/snippet/home_navbar.html:16
+msgid "Events"
+msgstr ""
+
+#: review/templates/review/snippet/home_navbar.html:19
+msgid "About"
+msgstr "À propos"
+
+#: review/templates/review/snippet/home_navbar.html:22
+msgid "Contact"
+msgstr ""
+
+#: review/templates/review/snippet/home_navbar.html:25
+msgid "?"
+msgstr ""
+
+#: review/templatetags/review_extras.py:240
+msgid "Closed"
+msgstr "Fermé"
+
+#: review/templatetags/review_extras.py:242
+msgid "Released"
+msgstr ""
+
+#: review/templatetags/review_extras.py:244
+msgid "In progress"
+msgstr "En cours"
+
+#: review/utils/defined_choices.py:14
+msgid "No type"
+msgstr "Sans type"
+
+#: review/utils/defined_choices.py:15
+msgid "Yes/No"
+msgstr "Oui/Non"
+
+#: review/utils/defined_choices.py:16
+msgid "Yes/No/Not applicable"
+msgstr "Oui/Non/S/O"
+
+#: review/utils/defined_choices.py:17
+msgid "Yes/Somewhat/No"
+msgstr "Oui/Un peu/Non"
+
+#: review/utils/defined_choices.py:18
+msgid "Yes/Somewhat/No/Not applicable"
+msgstr "Oui/Un peu/Non/S/O"
+
+#: review/utils/defined_choices.py:19
+msgid "Strongly agree/.../Strongly disagree"
+msgstr "Tout à fait d'accord/.../Fortement en désaccord"
+
+#: review/utils/defined_choices.py:22
+msgid "N/A"
+msgstr "S/O"
+
+#: review/utils/defined_choices.py:23
+msgid "Yes"
+msgstr "Oui"
+
+#: review/utils/defined_choices.py:24
+msgid "Somewhat"
+msgstr "Un peu"
+
+#: review/utils/defined_choices.py:26
+msgid "Strongly agree"
+msgstr "Tout à fait d'accord"
+
+#: review/utils/defined_choices.py:27
+msgid "Agree"
+msgstr "D'accord"
+
+#: review/utils/defined_choices.py:28
+msgid "Disagree"
+msgstr "En désaccord"
+
+#: review/utils/defined_choices.py:29
+msgid "Strongly disagree"
+msgstr "Fortement en désaccord"
+
+#: review/utils/defined_choices.py:58
+msgid "Saved (Unsubmitted)"
+msgstr "Sauvegardée (Non soumise)"
+
+#: review/utils/defined_choices.py:59
+msgid "Submitted"
+msgstr "Soumise"
+
+#: review/utils/defined_choices.py:60
+msgid "Under review"
+msgstr "En cours d'évaluation"
+
+#: review/utils/defined_choices.py:61
+msgid "Reviewed"
+msgstr "Évaluée"
+
+#: review/utils/defined_choices.py:62
+msgid "Reviewed (Accepted)"
+msgstr "Évaluée (Acceptée)"
+
+#: review/utils/defined_choices.py:63
+msgid "Reviewed (Revisions required)"
+msgstr "Évaluée (Non acceptée)"
+
+#: review/utils/defined_choices.py:64
+msgid "Reviewed (Not accepted)"
+msgstr "Évaluée (Non acceptée)"
+
+#: review/utils/defined_choices.py:65
+msgid "Withdrawn"
+msgstr "Retirée"
+
+#: review/utils/view_helpers.py:18
+msgid "You must be logged in to view this page."
+msgstr "Vous devez vous authentifier pour voir cette page."
+
+#: review/utils/view_helpers.py:31 review/utils/view_helpers.py:44
+msgid "You do not have permission to view that page."
+msgstr "Vous n'avez pas la permission de voir cette page."
+
+#: review/utils/view_helpers.py:72
+#, python-format
+msgid "<strong>An unhandled error of type %(etype)s occurred.</strong> "
+msgstr ""
+
+#: review/views.py:68
+#, python-format
+msgid "An error occurred while retrieving this event: %s, %d"
+msgstr ""
+
+#: review/views.py:104
+#, python-format
+msgid ""
+"There is already a user associated with the e-mail address %(email)s. If you "
+"already have an account, you can <a href=\"%(url)s\">click here</a> to use "
+"that account."
+msgstr ""
+
+#: review/views.py:135
+msgid "Error logging in after user creation"
+msgstr ""
+
+#: review/views.py:166
+msgid "An error occurred while trying to log you in. Please try again."
+msgstr ""
+
+#: review/views.py:208
+#, python-format
+msgid "%s <no-reply@cadem.io>"
+msgstr "%s <no-reply@cadem.io>"
+
+#: review/views.py:240
+msgid "Enter the e-mail address that you registered with or were provided."
+msgstr ""
+"Entrez l’adresse électronique avec laquelle vous vous êtes inscrit ou qui "
+"vous a été fournie."
+
+#: review/views.py:284
+msgid "<strong>Password reset complete.</strong> Try logging in."
+msgstr ""
+"<strong>Réinitialisation du mot de passe terminée.</strong> Essayez de vous "
+"connecter."
+
+#: review/views.py:289
+msgid "You have been successfully logged out."
+msgstr "Vous avez été déconnecté avec succès."
+
+#: review/views.py:338 review/views.py:608
+msgid "An error occurred while retrieving reviews for this submission."
+msgstr ""
+
+#: review/views.py:349
+msgid "Invalid submission ID provided."
+msgstr ""
+
+#: review/views.py:362
+msgid ""
+"<strong>Unable to create a new submission.</strong> You have reached the "
+"maximum number of submissions allowed."
+msgstr ""
+"<strong>Impossible de créer une nouvelle soumission.</strong> Vous avez "
+"atteint le nombre maximum de soumissions autorisées."
+
+#: review/views.py:375 review/views.py:435 review/views.py:716
+msgid "Create new submission"
+msgstr "Créer une nouvelle soumission"
+
+#: review/views.py:378 review/views.py:439
+msgid "You are not able to create a submission at this time."
+msgstr "Vous ne pouvez pas créer de soumission maintenant."
+
+#: review/views.py:412 review/views.py:491
+msgid ""
+"Your submission has been successfully saved, however for your submission to "
+"be considered, you must <strong>submit</strong> it before the submission "
+"deadline."
+msgstr ""
+"Votre soumission a été sauvegardée avec succès. Toutefois, pour que votre "
+"soumission soit considérée, vous devez la <strong>soumettre</strong> avant "
+"la date limite de soumission."
+
+#: review/views.py:425 review/views.py:503
+msgid "Your submission has been successfully submitted."
+msgstr "Votre soumission a été soumise avec succès."
+
+#: review/views.py:428 review/views.py:506
+msgid ""
+"<strong>Your submission was not saved.</strong> To save, please review the "
+"submission form and fix any outstanding issues."
+msgstr ""
+"<strong>Votre soumission n'a pas été sauvegardée.</strong> Pour la "
+"sauvegarder, veuillez revoir le formulaire et résoudre les problèmes."
+
+#: review/views.py:450
+msgid "This submission is not currently editable."
+msgstr "Vous ne pouvez pas modifier votre soumission actuellement."
+
+#: review/views.py:463 review/views.py:515
+msgid "Edit submission"
+msgstr "Modifier la soumission"
+
+#: review/views.py:518
+msgid "You are unable to edit this submission at this time."
+msgstr "Vous ne pouvez pas modifier votre soumission actuellement."
+
+#: review/views.py:538
+msgid "Manage event information"
+msgstr ""
+
+#: review/views.py:557
+msgid "Event info successfully updated"
+msgstr ""
+
+#: review/views.py:703
+msgid "Submission successfully created."
+msgstr ""
+
+#: review/views.py:730
+#, python-format
+msgid "Submission has been successfully deleted. (%s)"
+msgstr ""
+
+#: review/views.py:738 review/views.py:748
+msgid "Confirm deletion"
+msgstr ""
+
+#: review/views.py:753
+msgid "The requested submission does not exist."
+msgstr ""
+
+#: review/views.py:845
+msgid "Submissions added successfully."
+msgstr ""
+
+#: review/views.py:848
+msgid "An error occurred while trying to add submissions. Please try again."
+msgstr ""
+
+#: review/views.py:923
+msgid "Final verdicts for this process were successfully updated."
+msgstr ""
+
+#: review/views.py:925
+msgid "An error occurred while updating final verdicts."
+msgstr ""
+
+#: review/views.py:952
+msgid "Verdicts were updated successfully"
+msgstr ""
+
+#: review/views.py:955
+msgid "Criteria and verdicts were updated successfully"
+msgstr ""
+
+#: review/views.py:958
+msgid "Criteria and verdicts were not updated successfully"
+msgstr ""
+
+#: review/views.py:984
+#, python-format
+msgid ""
+"<strong>%(reviewer)s was successfully assigned %(assignments)s submission/s. "
+"</strong>(%(dupes)s duplicate/s)"
+msgstr ""
+
+#: review/views.py:993
+msgid "Review process successfully updated."
+msgstr ""
+
+#: review/views.py:995
+#, python-format
+msgid "An error occurred during validation: %s"
+msgstr ""
+
+#: review/views.py:1042
+#, python-format
+msgid ""
+"%(new)s new participant(s) created. %(existing)s existing participants found."
+msgstr ""
+
+#: review/views.py:1050
+#, python-format
+msgid ""
+"%(new)s new reviewers added to event. %(redundant)s existing reviewers were "
+"not changed."
+msgstr ""
+
+#: review/views.py:1058
+#, python-format
+msgid "%(last)s, %(first)s (%(email)s) was successfully added as a reviewer"
+msgstr ""
+
+#: review/views.py:1064
+msgid "Participant was not added successfully."
+msgstr ""
+
+#: review/views.py:1071
+msgid "Criteria was successfully added."
+msgstr ""
+
+#: review/views.py:1080
+msgid "Criteria was successfully edited."
+msgstr ""
+
+#: review/views.py:1093
+msgid "Verdict was successfully edited."
+msgstr ""
+
+#: review/views.py:1106
+msgid "Create review process"
+msgstr ""
+
+#: review/views.py:1120
+msgid "Review process was successfully created."
+msgstr ""
+
+#: review/views.py:1130
+msgid "Change all submission statuses"
+msgstr ""
+
+#: review/views.py:1135
+msgid "Notify reviewers by e-mail"
+msgstr ""
+
+#: review/views.py:1167
+#, python-format
+msgid "%s submissions had their statuses changed."
+msgstr ""
+
+#: review/views.py:1250
+#, python-format
+msgid "%s notifications were sent."
+msgstr ""
+
+#: review/views.py:1328
+msgid "An error occurred while staging notification e-mails"
+msgstr ""
+
+#: review/views.py:1376
+#, python-format
+msgid "<strong>%s email(s) were sent.</strong>"
+msgstr ""
+
+#: review/views.py:1384
+msgid ""
+"You need to enable submissions for this event to be able to change "
+"submission settings."
+msgstr ""
+
+#: review/views.py:1409
+msgid "An error occurred. Settings not saved."
+msgstr ""
+
+#: review/views.py:1427
+msgid "Manage submission strands"
+msgstr ""
+
+#: review/views.py:1428
+msgid "strand"
+msgstr "axe"
+
+#: review/views.py:1432
+msgid "Manage submission types"
+msgstr ""
+
+#: review/views.py:1433 review/views.py:1456 review/views.py:1498
+msgid "submission type"
+msgstr "type de soumission"
+
+#: review/views.py:1450 review/views.py:1492
+msgid "submission strand"
+msgstr "axe"
+
+#: review/views.py:1464 review/views.py:1506
+#, python-format
+msgid "Item of type <strong>%s</strong> was successfully added."
+msgstr ""
+
+#: review/views.py:1625
+msgid ""
+"<strong>Evaluation was saved</strong>. Please note that the evaluation must "
+"be <strong>submitted</strong> for it to be considered complete."
+msgstr ""
+"<strong>L'évaluation a été sauvegardée.</strong> Veuillez noter que "
+"l'évaluation doit être soumise pour qu'elle soit considérée comme complète."
+
+#: review/views.py:1629
+msgid "<strong>Evaluation was successfully submitted.</strong>"
+msgstr "<strong>L'évaluation a été soumise avec succès.</strong>"
+
+#: review/views.py:1632
+msgid "An invalid action was provided."
+msgstr ""
+
+#: review/views.py:1635
+msgid ""
+"<strong>A validation error occurred.</strong> Please check the evaluation "
+"grid below for details."
+msgstr ""
+"<strong>Une erreur de validation s'est produite.</strong> Veuillez consulter "
+"la grille d'évaluation ci-dessous pour plus de détails."
+
+#~ msgid "<strong>Last name, first name (pronouns), e-mail address;</strong>"
+#~ msgstr ""
+#~ "<strong>Nom, prénom (pronoms personnels), adresse électronique ;</strong>"
+
+#~ msgid ""
+#~ "If the submission has only a single author, you can leave this field "
+#~ "blank and your current information will be used."
+#~ msgstr ""
+#~ "Si la soumission n'a qu'une seule auteure ou qu'un seul auteur, vous "
+#~ "pouvez laisser ce champ vide et vos informations actuelles seront "
+#~ "utilisées."

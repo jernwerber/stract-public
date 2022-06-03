@@ -1,0 +1,46 @@
+{% extends "review/event.html" %}
+{% load i18n %}
+
+{% block inner %}
+
+	<div class="card">
+		<div class="card-body">
+		<h1 class="h3">{{ title }}</h1>		
+		<hr class="my-3" />
+	<form method="POST" novalidate>
+		{% csrf_token %}
+		{{ form.non_field_errors }}
+
+		{% for hidden_field in form.hidden_fields %}
+			{{ hidden_field.errors }}
+			{{ hidden_field }}
+		{% endfor %}
+
+			{% for field in form.visible_fields %}
+				<div class="form-group">
+					{{ field.label_tag }}
+					<small class="form-text text-muted">{{ field.help_text }}</small>
+					{{ field }}
+					{% if field.errors %}
+						<ul class="list-unstyled border-left mt-2 py-2 alert-secondary" style="border-left-width:5px !important; border-color:#383d41 !important">
+						  {% for error in field.errors %}
+							<li class="d-block ml-2">{{ error }}</li>
+						  {% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			{% endfor %}
+
+		<hr />
+		<div class="row justify-content-center">
+		<div class="col-auto">
+			<button class="btn btn-dark btn-block" type="submit">{{ title }}</button>
+		</div>
+		</div>
+	</form>
+		</div>
+	</div>
+	{% block after %}
+	
+	{% endblock %}
+{% endblock %}

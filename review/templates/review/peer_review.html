@@ -1,0 +1,57 @@
+{% extends "review/home.html" %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block inner %}
+<h1 class="h2">{% trans "My reviews" %}</h1>
+<hr class="my-3" />
+
+{% regroup assignments|dictsort:"is_complete" by is_complete as assignment_list %}
+{% for ass in assignment_list %}
+<h2 class="h5">
+	{% if not ass.grouper %}
+	{% trans 'Reviews assigned' %}
+	{% else %}
+	{% trans 'Reviews completed' %}
+	{% endif %}
+</h2>
+
+<table class='table'>
+	<thead>
+		<tr>
+			<th style="width:60%">{% trans 'Title' %}</th>
+			<th>{% trans 'Submission type' %}</th>
+			<th></th>		
+		</tr>
+	</thead>
+	{% for a in ass.list %}	
+		<tr>
+			<td>{{ a.submission.title }}</td>	
+			<td>{% _ml a.submission.submission_type 'text' LANGUAGE_CODE %}</td>
+			<td>{% if not ass.grouper %}<a href="{% url 'peer_review' event.pk a.pk %}" class="btn btn-sm btn-dark">{% trans 'Review' %}</a>{% else %}&mdash;{% endif %}</td>
+		</tr>
+	{% empty %}
+		<tr>
+			<td colspan='3' class='text-center'>
+			<em>{% trans "No submissions have been assigned for review!" %}</em>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+{% empty %} 
+<table class='table'>
+	<thead>
+		<tr>
+			<th style="width:60%">{% trans 'Title' %}</th>
+			<th>{% trans 'Submission type' %}</th>
+			<th></th>		
+		</tr>
+	</thead>
+	<tr>
+		<td colspan='3' class='text-center'>{% trans 'No review assignments found!' %}</td>
+	</tr>
+</table>
+{% endfor %}
+
+
+{% endblock %}

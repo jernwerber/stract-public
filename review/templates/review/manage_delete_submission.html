@@ -1,0 +1,46 @@
+{% extends "review/logged_in_form.html" %}
+{% load i18n %}
+
+{% block inner %}
+<div class="card">
+		<div class="card-header">
+			<a href="{% url 'manage_submissions' event.pk submission_id %}" class="btn btn-dark"><i class="fas fa-angle-left"></i> {% trans "Go back to submission" %}</a>
+		</div>
+		<div class="card-body">
+		<h1 class="display-4">{{ title }}</h1>		
+		<hr class="my-3" />
+	<form method="POST" novalidate>
+		{% csrf_token %}
+		{{ form.non_field_errors }}
+
+		{% for hidden_field in form.hidden_fields %}
+			{{ hidden_field.errors }}
+			{{ hidden_field }}
+		{% endfor %}		
+		
+		<div class="form-check text-center">
+			{{ form.confirm_delete }}
+			<label class="form-check-label">
+			{{ form.confirm_delete.label }}
+			</label>
+			
+		</div>
+		{% if form.confirm_delete.errors %}
+		<div class="text-center">
+			<strong>
+			{% for err in form.confirm_delete.errors %}
+				{{ err }}
+			{% endfor %}
+			</strong>
+		</div>
+		{% endif %}
+		
+		<hr />
+		<div class="text-right">
+			<button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i> {{ title }}</button>
+		</div>
+		
+	</form>
+
+
+{% endblock %}

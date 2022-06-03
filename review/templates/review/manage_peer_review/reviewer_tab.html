@@ -1,0 +1,61 @@
+{% load i18n %}
+{% load review_extras %}
+<div class="alert alert-light">
+	<div class="row">
+		<div class="col-auto">
+		<p class="h1 display-3"><i class="fas fa-question-circle"></i></p>
+		</div>
+		<div class="col">
+		<h3>{% trans 'About reviewers' %}</h3>
+		<p>{% blocktrans %}These are the reviewers that are available to be assigned submissions to review within a review process. Additional reviewers can be added from existing participants, individually (as new participants), or in bulk (as new participants).{% endblocktrans %}</p>
+		</div>
+	</div>
+</div>
+{% if form %}
+<div class="card">
+<div class="card-body">
+<form method="POST" class="form-inline" novalidate>
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+<div class="input-group col">
+	{{ form.participant_to_add }}
+	{{ form.participant_to_add.help_text }}
+<div class="input-group-append">
+<button type="submit" class="btn btn-dark">{% trans "Add reviewer" %}</button>
+</div>
+</div>
+<div class="col-auto">
+<a href="{% url 'manage_peer_review' event.pk 'reviewer_bulk_upload' %}" class="btn btn-dark">Bulk add reviewers...</a>
+</div>
+</form>
+</div>
+</div>
+{% endif %}
+<div class='big-table border-bottom'>
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+		<th>{% trans "First name" %}</th>
+		<th>{% trans "Last name" %}</th>
+		<th>{% trans "E-mail address" %}</th>	
+		<th><abbr title="{% trans 'Completed' %}">{% trans "Com." %}</abbr> / <abbr title="{% trans 'Total' %}">{% trans "Tot." %}</abbr></th>
+		<th>&nbsp;</th>
+	</tr>
+</thead>
+{% for r in event.review.reviewers.all|dictsortreversed:'submissionreview_set.count' %}
+<tr>
+	<td style="vertical-align:middle">{{ r.user.first_name }}</td>
+	<td style="vertical-align:middle">{{ r.user.last_name }}</td>
+	<td style="vertical-align:middle">{{ r.user.username }}</td>
+	<td style="vertical-align:middle">{{ r|count_for_reviewer_complete }} / {{ r|count_for_reviewer_total }}</td>
+	<td style="vertical-align:middle"><a class="btn btn-sm btn-outline-secondary disabled" href="#"><i class="fas fa-search"></i></a></td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan=5 class='text-center'><em>{% trans 'No participants are assigned as reviewers!' %}</em></td>
+</tr>
+{% endfor %}
+</table>
+</div>

@@ -1,0 +1,35 @@
+{% extends 'review/home.html' %}
+{% load i18n review_extras %}
+
+{% block jumbo-show %}
+
+{% endblock %}
+
+{% block inner %}
+<h1 class="h2 mb-4">{% trans 'Manage participants'%}</h1>
+
+<div class="big-table border-bottom">
+<table class="table table-sm table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>{% trans 'First name' %}</th>
+			<th>{% trans 'Last name' %}</th>
+			<th>{% trans 'E-mail address' %}</th>
+			<th><abbr title="{% trans 'Reviewer' %}">{% trans 'R.' context 'abbreviation for reviewer' %}</abbr></th>
+			<th>{% trans 'Last login' %}</th>
+		</tr>
+	</thead>
+	{% for p in participants|dictsort:'user.last_name' %}
+	<tr>
+		<td>{{ p.pk }}</td>
+		<td>{{ p.user.first_name }}</td>
+		<td>{{ p.user.last_name }}</td>
+		<td>{{ p.user.username }}</td>
+		<td>{% if p.is_reviewer %}<i class="fas fa-check"></i>{% endif %}</td>
+		<td>{{ p.user.last_login|or_empty:'Never' }}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

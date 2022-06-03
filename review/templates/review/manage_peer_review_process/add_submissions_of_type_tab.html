@@ -1,0 +1,52 @@
+{% extends 'review/manage_peer_review_process.html' %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block tab %}
+
+
+<div class="alert alert-warning">
+{% blocktrans with sub_type=submission_type|ml_text:LANGUAGE_CODE count counter=form.submissions|length %}
+<strong>Note: This will add one {{ sub_type }} submission to this process.</strong>
+{% plural %}
+<strong>Note: This will add {{ counter }} {{ sub_type }} submissions to this process.</strong>
+{% endblocktrans %}
+{% blocktrans %}
+ You can deselect individual submissions of this type below to prevent them from being included in this process.
+{% endblocktrans %}
+</div>
+<form method="POST" novalidate>
+{% csrf_token %}
+<div class="big-table border-bottom mb-3">
+<table class="table table-sm table-striped mb-4">
+	<thead>
+		<tr>
+			<th style="width:95%">{% trans 'Submission title' %}</th>
+			<th>&mdash;</th>
+		</tr>
+	</thead>
+	{% for s in form.submissions %}	
+	<tr>
+		<td>{{ s.choice_label }}</td>
+		<td><div class="custom-control custom-checkbox">{{ s.tag }}<label class="custom-control-label" for="{{s.id_for_label}}"></label></td>
+	</tr>
+	{% empty %}
+	<tr>
+		<td colspan='2'>
+			<em>{% trans "Submissions of this type exist for this event" %}</em>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+<div class="row justify-content-between">
+	<div class="col-auto">
+		<a href="{% url 'manage_peer_review' event.pk process.pk 'submissions' %}" class="btn btn-secondary">{% trans 'Go back' %}</a> 
+		<button type="reset" class="btn btn-secondary">{% trans 'Undo changes' %}</button>
+	</div>
+	<div class="col-auto">
+		<button type="submit" class="btn btn-secondary">{% trans 'Add selected' %}</button>
+	</div>
+</div>
+</form>
+{% endblock %}

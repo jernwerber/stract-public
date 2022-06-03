@@ -1,0 +1,63 @@
+{% extends "review/event.html" %}
+{% load i18n review_extras %}
+
+{% block jumbo-show %}
+
+{% endblock %}
+{% block jumbo %}
+
+{% endblock %}
+{% block menu %}
+
+{% endblock %}
+{% block content %}
+<div class="container-fluid py-3">
+<h1 class="h2">{% trans 'Submissions table view' %}</h1>
+<div class="row my-2">
+	<div class="col-auto">
+		<a href="{% url 'manage_submissions' event.pk %}" class="btn btn-secondary">{% trans 'Go back to submissions' %}</a>
+	</div>
+</div>
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Type</th>
+		<th>Language</th>
+		<th>Strand</th>
+		<th>Keywords</th>
+		<th>First name</th>
+		<th>Last name</th>
+		<th>E-mail address</th>
+		<th>Affiliation</th>
+		<th>Excl. reviewers</th>
+		<th>All authors</th>
+		<th>Status</th>
+		<th>Verdict</th>
+	</tr>
+</thead>
+{% for submission in submissions %}
+	<tr>
+		<td>{{ submission.pk }}</td>
+		<td><a href="{% url 'manage_submissions' event_id=event.pk submission_id=submission.pk %}" target="about:blank">{{ submission.title }}</a></td>
+		<td>{{ submission.submission_type|ml_text:LANGUAGE_CODE }}</td>
+		<td>{{ submission.language|code:'lang' }}</td>
+		<td>{{ submission.submission_strand|ml_text:LANGUAGE_CODE }}</td>
+		<td>{{ submission.keywords_t }}</td>
+		<td>{{ submission.corresponding_author.participant.user.first_name }}</td>
+		<td>{{ submission.corresponding_author.participant.user.last_name }}</td>
+		<td>{{ submission.corresponding_author.participant.user.email }}</td>
+		<td>{{ submission.corresponding_author.participant.affiliation_t }}</td>
+		<td>{{ submission.excluded_authors_t }}</td>
+		<td>{{ submission.corresponding_author.participant.user.first_name }} {{ submission.corresponding_author.participant.user.last_name }}{% if submission.all_authors_t %}; {{ submission.all_authors_t }}{% endif %}
+		</td>
+		<td>{{ submission.submission_status|code:'status' }}</td>
+		<td>{{ submission|get_verdict_if_reviewed }}
+	</tr>
+{% empty %}
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% load i18n review_extras static %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!doctype html>
+<html>
+<head>
+{% block title %}<title>stract</title>{% endblock %}
+ <!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- FontAwesome CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+{% block head %}
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400&display=swap&subset=latin-ext" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="{% static 'review/css/base.css' %}">
+{% endblock %}
+</head>
+<body class="bg-light" {% if anchor %} onload="window.location.href += '#{{ anchor }}'" {% endif %}>
+{% block menu %}
+	{% include "review/snippet/home_navbar.html" %}
+{% endblock %}
+<main role="main" class="bg-white" style="margin-top:57px">
+	{% block jumbo %}
+		{% include "review/snippet/home_jumbo.html" %}
+	{% endblock %}
+	{% block content %}
+		{% include "review/snippet/home_content.html" %}
+	{% endblock %}
+</main>
+
+{% block footer %}
+<footer class="footer bg-dark mt-auto py-4 border-top border-secondary">
+	<div class="container">
+		<div class="row text-light">
+			<div class="col-md-4">
+
+			</div>
+			<div class="col-md-4 border-right border-left border-secondary">
+
+			</div>
+			<div class="col-md-4">
+
+			</div>
+		</div>
+	</div>
+</footer>
+{% endblock %}
+
+
+<!-- Optional Javascript -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="{% static 'review/js/jquery.are-you-sure.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% block script %}
+
+{% endblock %}
+</body>
+</html>

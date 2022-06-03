@@ -1,0 +1,154 @@
+{% extends "review/home.html" %}
+{% load i18n review_extras %}
+
+{% block jumbo-show %}
+
+{% endblock %}
+
+{% block inner %}
+<h1 class="h2">{% trans 'View submission' %}</h1>
+<hr class="my-2" />
+<div class="row justify-content-between">
+	<div class="col-auto">
+		<a class="btn btn-secondary" href="{% url 'participant_submissions' event.pk %}"><i class="fas fa-angle-left"></i> {% trans 'Go back to my submissions' %}</a>
+	</div>
+	<div class="col-auto align-self-center">
+		<span class="font-weight-bold d-inline-block mr-2">{% trans 'Submission status' %}</span>
+		<span>{{ submission.submission_status|code:'status' }}</span>
+	</div>
+</div>
+<hr class="my-2" />
+<div class="card">
+	<div class="card-header">
+		<h2 class="h4 card-title mb-0">{% trans 'Submission details' %}</h2>
+	</div>
+	<div class="card-body">
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'Submission title' %}</dt>
+			<dd class="col-md-8">{{ submission.title }}</dd>
+		</div>
+		<div class="row  mb-2">
+			<dt class="col-md-4">{% trans 'Language' %}</dt>
+			<dd class="col-md-8">{{ submission.language|code:'lang' }}</dd>
+		</div>
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'Corresponding author' %}</dt>
+			<dd class="col-md-8">{{ submission.corresponding_author }}</dd>
+		</div>
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'All authors' %}</dt>
+			<dd class="col-md-8">
+				{% if submission.all_authors_t %}
+					{{ submission.all_authors_t }}
+				{% else %}
+					{{ submission.corresponding_author.participant.user.first_name }}
+					{{ submission.corresponding_author.participant.user.last_name }}
+				{% endif %}
+			</dd>
+		</div>
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'Submission type' %}</dt>
+			<dd class="col-md-8">{{ submission.submission_type|ml_text:LANGUAGE_CODE }}</dd>
+		</div>
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'Submission strand' %}</dt>
+			<dd class="col-md-8">{{ submission.submission_strand|ml_text:LANGUAGE_CODE|or_empty:'&mdash;' }}</dd>
+		</div>
+		<div class="row mb-2">
+			<dt class="col-md-4">{% trans 'Keywords' %}</dt>
+			<dd class="col-md-8">{{ submission.keywords_t|or_empty:'&mdash;' }}</dd>
+		</div>
+	</div>
+</div>
+<div class="card mt-2">
+	<div class="card-header">
+	<div class="row justify-content-between mb-0">
+		<div class="col-auto">
+			<h2 class="h4 card-title mb-0">{% trans 'Submission text' %}</h2>
+		</div>
+		<div class="col-auto">
+			<a href="#" class="btn btn-light btn-sm" data-toggle='collapse' data-target='#submission_text'><i class="fas fa-minus"></i></a>
+		</div>
+	</div>
+	</div>
+	<div class="card-body collapse" id="submission_text">
+		{{ submission_text.submission_text|linebreaks }}
+	</div>
+</div>
+<div class="card mt-2">
+	<div class="card-header">
+		<div class="row justify-content-between mb-0">
+			<div class="col-auto">
+				<h2 class="h4 card-title mb-0">{% trans 'Submission references' %}</h2>
+			</div>
+			<div class="col-auto">
+				<a href="#" class="btn btn-light btn-sm" data-toggle='collapse' data-target='#submission_references'><i class="fas fa-minus"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="card-body collapse" id="submission_references">
+		{{ submission_text.submission_references|or_empty:'&mdash;'|linebreaks }}
+	</div>
+</div>
+{% if reviews %}
+<div class="card mt-2">
+	<div class="card-header">
+		<h2 class="h4 card-title mb-0">{% trans 'Submission evaluations' %}</h2>
+	</div>
+	<div class="card-body">
+		{% if reviews.processes.count > 1 %}
+		<ul class="nav nav-tabs">
+			{% for review_process in reviews.processes %}
+				<li class="nav-item">
+					<a class="nav-link active" href="#">{% trans 'Review process' %} {{ forloop.counter }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+		{% for review_process in reviews.processes %}
+		<div class="col-auto mb-4">
+			<h3 class="h5">{% trans 'Peer review process verdict' %}</h3>
+			{{ review_process.verdict.verdict|ml_text:LANGUAGE_CODE }}
+		</div>
+			<ul class="nav nav-tabs my-3" role="tablist">
+				{% for review in review_process.reviews %}
+					<li class="nav-item">
+						<a class="nav-link {% if forloop.first %}active{% endif %}" id="p-{{ review_process.pk }}-review-{{ forloop.counter }}-tab" href="#p-{{ review_process.pk }}-review-{{ forloop.counter }}" role="tab" aria-controls="p-{{ review_process.pk }}-review-{{ forloop.counter }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}" data-toggle="tab">{% trans 'Review ' %} {{ forloop.counter }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+			<div class="tab-content my-3" id="review-tab-content">
+			{% for review in review_process.reviews %}
+			<div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="p-{{ review_process.pk }}-review-{{ forloop.counter }}" role="tabpanel" aria-labelledby="p-{{ review_process.pk }}-review-{{ forloop.counter }}-tab">
+					<div class="col-auto mb-4">
+						<h3 class="h5">{% trans 'Reviewer verdict' %}</h3>
+						{{ review.verdict|ml_text:LANGUAGE_CODE }}
+					</div>
+					<div class="col-auto">
+						<h3 class="h5">{% trans 'Evaluation details' %}</h3>
+					</div>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="width:45%">{% trans 'Criteria' %}</th>
+							<th>&mdash;</th>
+							<th style="width:45%">{% trans 'Comments' %}</th>
+						</tr>
+					</thead>
+				{% for feedback in review.reviewfeedback_set.all %}
+					<tr>
+						<td>{{ feedback.criteria|ml_text:LANGUAGE_CODE }}</td>
+						<td>{{ feedback.criteria_score|code:'criteria_type_choice' }}</td>
+						<td>{{ feedback.text|or_empty:'&mdash;' }}</td>
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+			{% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endif %}
+{% endblock %}

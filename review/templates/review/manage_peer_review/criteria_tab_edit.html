@@ -1,0 +1,35 @@
+{% load i18n %}
+{% load review_extras %}
+<h5>{% trans 'Edit criteria' %}</h5>
+<form method="POST" novalidate>
+{% csrf_token %}
+{% for f in form.hidden_fields %}
+	{{ f }}
+{% endfor %}
+<div class="row">
+{% for f in form.visible_fields %}
+
+	<div class="col-auto">
+	<strong>{{ f.label_tag }}</strong>
+	{{ f }}
+	</div>
+
+{% endfor %}
+	
+</div>
+<hr class='my-3' />
+	<div class="row justify-content-between">
+		<div class="col-auto">
+			<a href="{% url 'manage_peer_review' event_id=event.pk tab='criteria' %}" class="btn btn-dark">{% trans 'Back' %}</a>
+		</div>
+		<div class="col-auto">
+			<button type="submit" class="btn btn-dark">{% trans 'Save changes' %}</button>
+		</div>
+</form>
+{% if form.has_errors %}
+{% for e in form.errors %}
+<div class="alert alert-warning">
+	{{ e.message }}
+</div>
+{% endfor %}
+{% endif %}

@@ -1,0 +1,44 @@
+{% extends "review/home.html" %}
+{% load i18n %}
+
+{% block inner %}
+<div class="card">
+		<div class="card-body">
+		<h1 class="display-4">{{ title }}</h1>		
+		<hr class="my-3" />
+	<form method="POST" novalidate>
+		{% csrf_token %}
+		{{ form.non_field_errors }}
+
+		{% for hidden_field in form.hidden_fields %}
+			{{ hidden_field.errors }}
+			{{ hidden_field }}
+		{% endfor %}
+		{% regroup form.visible_fields by field.form_group as field_groups %}
+		{% for group in field_groups %}
+			{% for field in group.list %}
+				<div class="form-group">
+					<strong>{{ field.label_tag }}</strong>					
+					{{ field }}
+					<small class="form-text text-muted">{{ field.help_text|safe }}</small>
+					{% if field.errors %}
+						<ul class="list-unstyled border-left mt-2 py-2 alert-secondary" style="border-left-width:5px !important; border-color:#383d41 !important">
+						  {% for error in field.errors %}
+							<li class="d-block ml-2">{{ error }}</li>
+						  {% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+				
+			{% endfor %}
+			<hr class="my-4" />
+		{% endfor %}
+		<div class="text-right">
+			<button class="btn btn-dark" type="submit">{{ title }}</button>
+		</div>
+	</form>
+		</div>
+	</div>
+
+
+{% endblock %}

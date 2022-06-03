@@ -1,0 +1,10 @@
+{% extends "review/default_form.html" %}
+{% load i18n %}
+
+{% block after %}
+<div class="row my-3">
+<div class="col text-center">
+<a href="{% url 'password_reset' event.pk %}">{% trans 'Forgot your password?' %}</a>
+</div>
+</div>
+{% endblock %}

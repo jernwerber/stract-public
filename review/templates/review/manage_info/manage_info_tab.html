@@ -1,0 +1,102 @@
+{% extends 'review/manage_info.html' %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block tab %}
+<form method="POST" novalidate>
+{% csrf_token %}
+{% regroup form.visible_fields by field.group_type as fields %}
+{% for field_group in fields %}
+	{% if field_group.grouper == 'toggles' %}
+	<div class="row">
+		{% for toggle_field in field_group.list %}
+				<div class="col-md-4 text-md-right">
+					<strong>{{ toggle_field.label }}</strong>
+					<p class="text-muted">{{ toggle_field.help_text|safe|default:" " }}</p>
+				</div>
+				<div class="col-md-2">
+					<div class="custom-control custom-switch">
+					{{ toggle_field }}
+					<label class="custom-control-label" for="{{ toggle_field.auto_id}}">&nbsp;</label>
+					</div>
+				</div>
+		{% endfor %}
+		</div>
+	{% elif field_group.grouper == 'dates' %}
+		<div class="row">
+		{% for date_field in field_group.list %}
+				<div class="col-lg-3 text-md-right">
+					<strong>{{ date_field.label_tag }}</strong>
+					<p class="text-muted">{{ date_field.help_text }}</p>
+				</div>
+				<div class="col-lg-3 mb-2">
+					{{ date_field }}
+				</div>
+		{% endfor %}
+		</div>
+	{% elif field_group.grouper == 'short_text' %}
+		<div class="row">
+		{% for field in field_group.list %}
+			<div class="col-md-6">
+				<div class="form-group">
+				<strong>{{ field.label_tag }}</strong>
+				{{ field }}
+				{% if field.help_text %}
+					<small class="text-muted">{{ field.help_text }}</small>
+				{% endif %}
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	{% elif field_group.grouper == 'm2m' %}
+		<div class="row">
+		{% for m2m_field in field_group.list %}
+			<div class="col-md-4 text-md-right">
+				<strong>{{ m2m_field.label_tag }}</strong>
+				<p class="text-muted">{{ m2m_field.help_text|safe }}</p>
+			</div>
+			<div class="col overflow-auto" style="max-height:15em">
+			<table class="table table-sm table-striped">
+				<thead>
+					<tr>
+						<th style="width:85%" class="pl-4">{% trans 'Participant' %}</th>
+						<th>&mdash;</th>
+					</tr>
+				</thead>
+			{% for p in m2m_field|dictsortreversed:'data.selected' %}
+				<tr>
+					<td class="pl-4">{{ p.choice_label }}</td>
+					<td><div class="custom-control custom-checkbox">{{ p.tag }}<label class="custom-control-label" for="{{p.id_for_label}}"></label></div></td>
+				</tr>
+			{% endfor %}
+			</table>
+			</div>
+		{% endfor %}
+		</div>
+	{% else %}
+		{% for field in field_group.list %}
+			<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+				<strong>{{ field.label_tag }}</strong>
+				{{ field }}
+				{% if field.help_text %}
+					<small class="text-muted">{{ field.help_text }}</small>
+				{% endif %}
+				</div>
+			</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+	<hr class="my-3" />
+{% endfor %}
+<div class="row justify-content-between">
+	<div class="col-auto">
+		<button type="reset" class="btn btn-secondary">{% trans 'Undo changes' %}</button>
+	</div>
+	<div class="col-auto">
+		<button type="submit" class="btn btn-secondary">{% trans 'Update event info' %}</button>
+	</div>
+</div>
+</form>
+{% endblock %}

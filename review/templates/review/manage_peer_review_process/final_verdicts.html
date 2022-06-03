@@ -1,0 +1,70 @@
+{% extends "review/wide.html" %}
+{% load i18n review_extras %}
+
+{% block jumbo-show %}
+
+{% endblock %}
+
+{% block inner %}
+	<a id="jumbo-collapse" data-toggle="collapse" href="#main-jumbo" class="btn btn-white float-right"><i class="fas fa-minus btn-open"></i><i class="fas fa-plus btn-closed"></i></a>
+	<h1>{% trans "Manage peer review process" %}</h1>
+	<h2 class="h3">{% trans 'Assign final verdicts' %}</h2>	
+<hr class="my-2" />
+<div class="row mb-2">
+	<div class="col-auto">
+	<a class="btn btn-secondary" href="{% url 'manage_peer_review' event.pk process.pk 'assignments' %}"><i class="fas fa-angle-left"></i> {% trans 'Go back to review assignment' %}</a>
+	</div>
+</div>
+<form method="POST" novalidate>
+{{ formset.management_form }}
+{% csrf_token %}
+<div class="big-table border-top border-bottom mt-2">
+<table class="table table-sm table-striped">
+	<thead>
+		<tr>
+			<th>SID</th>
+			<th style="width:40%">{% trans 'Title' %}</th>
+			<th>{% trans 'Type' %}</th>
+			<th>{% trans 'Strand' %}</th>
+			<th style="width:15%">{% trans 'Review verdicts' %}</th>
+			<th style="width:15%">{% trans 'Final verdict' %}</th>
+		</tr>
+	</thead>
+{% regroup formset.forms by instance.verdict.pk as regrouped_form %}
+	{% for form_group in regrouped_form %}
+		{% for form in form_group.list|dictsort:'instance.submission.pk' %}			
+			<tr>
+				<td><a name="submission_{{ form.instance.submission.pk }}"></a>{{ form.instance.submission.pk }}</td>
+				<td><a href="{% url 'manage_submissions' event_id=event.pk submission_id=form.instance.submission.pk %}" target="_about:blank">{{ form.instance.submission.title }}</a></td>
+				<td>{% _ml form.instance.submission.submission_type 'text' LANGUAGE_CODE %}</td>
+				<td>{% _ml_or_default form.instance.submission.submission_strand 'text' LANGUAGE_CODE %}</td>
+				<td>
+					<ul class="list-unstyled">
+					{% for review in form.instance.submission.reviews.all %}
+						<li class="justify-content-left px-0"><span class="badge badge-primary">{% _ml_or_default review.verdict 'text' LANGUAGE_CODE default="In progress" %}</span></li>
+					{% empty %}
+						<li class="justify-content-left px-0"><span class="badge badge-secondary">{% trans 'Unassigned' %}</span></li>
+					{% endfor %}				
+					</ul>
+				</td>
+				<td>			
+						{{ form.verdict }}	
+						{% for field in form.hidden_fields %}
+							{{ field }}
+						{% endfor %}
+				</td>
+			</tr>
+		{% endfor %}
+	{% endfor %}
+</table>
+</div>
+		<div class="row mt-2 justify-content-between">
+			<div class="col-auto">
+				<button class="btn btn-secondary" type="reset"><i class="fas fa-undo"></i> {% trans 'Undo changes' %}</button>
+			</div>
+			<div class="col-auto">
+				<button class="btn btn-secondary" type="submit">{% trans 'Update final verdicts' %}</button>
+			</div>
+		</div>
+</form>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% load i18n %}
+{% load review_extras %}
+
+<!--
+<div class="row">
+	<div class='col'>
+	<h4>{% trans "Evaluation criteria" %}</h4>
+	<table class='table'>
+	<thead>
+		<tr>
+		<th>{% trans 'Criteria' %}</th>
+		<th>{% trans 'Criteria type' %}</th>
+		</tr>
+	</thead>
+	{% for r in process.rubric.all %}
+	<tr>
+		<td>{% _ml r 'text' LANGUAGE_CODE %}</td>
+		<td>{{ r.criteria_type|code:"criteria_type" }}</td>
+	</tr>
+	{% empty %}
+		<em>{% trans "No criteria have been added to this process!" %}</em>
+	{% endfor %}
+	</table>
+-->
+
+<form method="POST" novalidate>
+{% csrf_token %}
+{% for field in form.hidden_fields %}
+	{{ field }}
+{% endfor %}
+<div class="row">
+<div class="col">
+{% if process.is_confirmed %}
+<div class="alert alert-warning">{% trans 'The criteria for this process have been confirmed and cannot be added or removed until the setting on the "Overview" tab has been switched.' %}</div>
+{% endif %}
+<h4>{% trans "Include or remove evaluation criteria" %}</h4>
+
+<table class="table table-sm table-striped mb-4">
+<thead>
+	<tr>
+		<th style="width:45%">{% trans 'Text (English)' %}</th>
+		<th style="width:45%">{% trans 'Text (French)' %}</th>
+		<th>&mdash;</th>
+	</tr>
+</thead>
+{% if process.is_confirmed %}
+
+	{% regroup form.rubric by data.selected as sorted_form %}
+	{% for groups in sorted_form %}
+		{% if groups.grouper == True %}
+			{% for r in groups.list %}
+			<tr>
+				{{ r.choice_label|td_on:' / '|safe }}
+				<td>{% if not process.is_confirmed %}<div class="custom-control custom-checkbox">{{ r.tag }}<label class="custom-control-label" for="{{r.id_for_label}}"></label></div>{% endif %}</td>
+			</tr>
+			{% empty %}
+				<em>{% trans "No criteria have been added to this event!" %}</em>
+			{% endfor %}
+		{% endif %}
+	{% endfor %}
+{% else %}
+
+{% for r in form.rubric|dictsortreversed:'data.selected' %}
+
+<tr>
+	{{ r.choice_label|td_on:' / '|safe }}
+	<td>{% if not process.is_confirmed %}<div class="custom-control custom-checkbox">{{ r.tag }}<label class="custom-control-label" for="{{r.id_for_label}}"></label>{% endif %}</td>
+</tr>
+{% empty %}
+	<em>{% trans "No criteria have been added to this event!" %}</em>
+{% endfor %}
+{% endif %}
+</table>
+
+<h4>{% trans "Include or remove review verdicts" %}</h4>
+
+<table class="table table-sm table-striped">
+<thead>
+	<tr>
+		<th style="width:45%">{% trans 'Text (English)' %}</th>
+		<th style="width:45%">{% trans 'Text (French)' %}</th>
+		<th>&mdash;</th>
+	</tr>
+</thead>
+{% for v in form.verdicts|dictsortreversed:'data.selected' %}
+<tr>
+	{{ v.choice_label|td_on:' / '|safe }}
+	<td><div class="custom-control custom-checkbox">{{ v.tag }}<label class="custom-control-label" for="{{v.id_for_label}}"></label></td>
+</tr>
+{% empty %}
+	<em>{% trans "No verdicts have been created for this event!" %}</em>
+{% endfor %}
+
+</table>
+</div>
+</div>
+
+<hr class="mb-3" />
+
+<div class="row justify-content-between">
+	<div class="col-auto">
+		<button type="reset" class="btn btn-dark">{% trans 'Undo changes' %}</button>
+	</div>
+	<div class="col-auto">
+		<button type="submit" class="btn btn-dark">{% trans 'Update criteria and verdicts' %}</button>
+	</div>
+</div>
+</form>

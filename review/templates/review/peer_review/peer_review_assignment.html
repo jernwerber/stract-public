@@ -1,0 +1,112 @@
+{% extends "review/peer_review.html" %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block inner %}
+
+<h1>{% trans "My reviews" %}</h1>
+<a href="{% url 'peer_review' event.pk %}" class="btn btn-dark">{% trans 'Return to assignments' %}</a>
+<hr class="my-3" />
+<h2 class="h4 mb-3">{{ review.submission.title }}</h2>
+<div class="row">
+	<div class="col-6">
+		<strong>{% trans 'Submission type' %}</strong>
+		<p>{{ review.submission.submission_type }}</p>
+	</div>
+	<div class="col-6">
+		<strong>{% trans 'Submission language' %}</strong>
+		<p>{{ review.submission.language|code:'lang' }}</p>
+	</div>
+	<div class="col">
+		<strong>{% trans 'Keywords' %}</strong>
+		<p>{{ review.submission.keywords_t|or_empty:'&mdash;' }}</p>
+	</div>
+</div>
+<hr class="mt-1 mb-3" />
+		<h3 class="h5">{% trans 'Submission text' %}</h3>
+		<p>{{ review.submission_text.submission_text|linebreaks }}</p>
+		<h3 class="h5">{% trans 'Submission references' %}</h3>
+		<p>{{ review.submission_text.submission_references|linebreaks }}</p>
+<a name="grid"></a>
+<div class="card">
+	<div class="card-header">	
+	{% trans 'Evaluation grid' %}
+	</div>
+	<div class="card-body">
+		{% for e in formset.non_form_errors %}
+		<div class="alert alert-warning">{{ e|safe }}</div>
+		{% endfor %}
+		<form method="POST" id="review-assignment" novalidate>
+		{{ formset.management_form }}
+		{% csrf_token %}
+		<table class="table">
+			<thead>
+				<tr>
+					<th>{% trans 'Criteria' %}</th>
+					<th style="width:15%"></th>
+					<th style="width:45%">{% trans 'Comments (optional)' %}</th>
+				</tr>
+			</thead>
+			
+			{% for form in formset %}
+			<tr>
+				<td>{{ form.text.label }}</td>
+				<td>{{ form.criteria_score }}</td>
+				<td>{{ form.text }}
+				{% for error in form.errors %}
+					{{ error }}
+				{% empty %}
+				
+				{% endfor %}
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}
+				</td>
+			</tr>
+			{% endfor %}
+			<tr>
+				<td colspan="3">
+					<div class="row justify-content-end">
+						<div class="col">
+							<strong>{{ form.verdict.label_tag }}</strong>
+							<p class="text-muted">{{ form.verdict.help_text }}</p>
+						</div>
+						<div class="col">
+							{{ form.verdict }}
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<div class="row justify-content-between">
+						<div class="col-auto">
+						<button type='reset' class='btn btn-outline-dark'>{% trans 'Undo changes' %}</button>
+						</div>
+						<div class="col-auto">
+						<button type='submit' name="form_save" class="btn btn-outline-dark">{% trans "Save evaluation" %}</button>
+						<button type='submit' name="form_submit" class="btn btn-outline-dark">{% trans "Save and submit evaluation" %}</button>
+						</div>
+					</div>
+				</td>
+			</tr>
+			
+		</table>
+		</form>
+	</div>
+</div>
+
+{% endblock %}
+{% block script %}
+
+<script>
+  $(function() {
+    $('#review-assignment').areYouSure(
+      {
+        message: '{% trans 'You will lose any unsaved changes if you leave this page.' %}'
+      }
+    );
+  });
+</script>
+
+{% endblock %}

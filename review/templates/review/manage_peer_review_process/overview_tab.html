@@ -1,0 +1,54 @@
+{% load i18n %}
+{% load review_extras %}
+
+<div class="row justify-content-between">
+<div class="col-auto">
+<h2 class="h4">{% trans 'Review process overview' %}</h2>
+</div>
+<div class="col-auto">
+<span class="text-muted">{% trans 'Current status:' %}</span> <strong>{% review_process_state_widget process %}</strong>
+</div>
+</div>
+
+<form method="POST" novalidate>
+{% csrf_token %}
+<div class="row">
+	<div class="col-md-6">
+		<strong>{{ form.nickname.label }}</strong>
+		<p class="text-muted">{{ form.nickname.help_text|safe }}</p>
+	</div>
+	<div class="col">		
+		{{ form.nickname }}
+	</div>
+</div>
+{% for f in form.hidden_fields %}
+	{{ f }}
+{% endfor %}
+{% for f in form.visible_fields %}
+{% if f != form.nickname %}
+<div class="row">
+	<div class="col-md-6">
+		<strong>{{ f.label }}</strong>
+		<p class="text-muted">{{ f.help_text|safe }}</p>
+	</div>
+	<div class="col">
+		<div class="custom-control custom-switch">			
+		{{ f }}
+		<label class="custom-control-label" for="{{ f.auto_id}}">&nbsp;</label>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endfor %}
+<hr class="my-3" />
+<div class="row justify-content-between">
+<div class="col-auto">
+	<button type='reset' class='btn btn-dark'>{% trans 'Undo changes' %}</button>
+</div>
+<div class="col-auto">
+	<a href="{% url 'peer_review_process_notify' event_id=event.pk process_id=process.pk %}" class="btn btn-secondary {% if not process.is_released %}disabled{% endif %}">{% trans 'Notify authors' %} <i class="far fa-envelope"></i></a>
+	<button type='submit' class='btn btn-dark'>{% trans 'Update review process' %}</button>
+</div>
+</div>
+</form>
+

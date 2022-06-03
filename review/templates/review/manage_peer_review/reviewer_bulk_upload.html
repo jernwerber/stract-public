@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load review_extras %}
+<div class="alert alert-light">
+	<div class="row">
+		<div class="col-auto">
+		<p class="h1 display-3"><i class="fas fa-question-circle"></i></p>
+		</div>
+		<div class="col">
+		<h3>{% trans 'Reviewer bulk upload' %}</h3>
+		<p>{% trans 'You can use this form to create many users at once and add them as reviewers to this event. Users that already exist will be added as reviewers and users that do not exist will first be created, then added as reviewers.' %}</p>
+		</div>
+	</div>
+</div>
+
+<form enctype="multipart/form-data" method="post" novalidate>
+{% csrf_token %}
+<div class="row">
+	<div class="form-group col-9">
+	<div class="card">
+		<div class="card-body p-1">
+	{{ form.csv_with_reviewers }}
+		</div>
+	</div>
+	</div>
+	<div class="col-3">
+	<button type="submit" class="btn btn-dark">{% trans _('Upload and process') %}</button>
+	</div>
+</div>
+<hr class="my-2" />
+<p class="text-muted">{{ form.csv_with_reviewers.help_text|safe }}</p>
+</form>

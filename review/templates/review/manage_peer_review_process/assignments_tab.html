@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load review_extras %}
+
+
+	<h3 class="h5">{% trans "Assign submissions to reviewers" %}</h3>
+	
+	<hr class="my-3" />
+	<form method="POST" novalidate>
+	<div class="form justify-content-between">
+		<div class="row">
+			<div class="col">
+				<div class='input-group'>
+					{{ form.reviewer }}
+				<div class='form-input input-group-append'>
+					<button type="submit" class="btn btn-secondary">{% trans "Assign to reviewer" %}</button>
+				</div>
+				</div>
+			</div>
+			<div class="col-auto">
+				<a class="btn btn-secondary" href="{% url 'process_set_final_verdicts' event.pk process.pk %}">Assign final verdicts...</a>
+			</div>
+		</div>
+	</div>
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+<div class="big-table border-top border-bottom my-3">
+	<table class='table'>
+	<thead>
+		<tr>
+		<th>ID</th>
+		<th style="width:60%">{% trans 'Title' %}</th>
+		<th>{% trans 'Submission type' %}</th>
+		<th><abbr title="Number of reviewers assigned">#</a></th>
+		<th>{% trans 'Assign' %}</th>
+		</tr>
+	</thead>
+	{% for s in form.submissions %}
+	<tr>
+		<td>{{ s.data.value }}</td>
+		{{ s.choice_label|td_on:'::'|safe }}
+		<td>{{ process|get_count:s.data.value }}</td>
+		<td>{{ s.tag }}</td>
+	</tr>
+	{% empty %}
+	<tr>
+		<td colspan='5'><em>{% trans "No submissions have been added to this process!" %}</em></td>
+	</tr>
+	{% endfor %}
+	<tr>
+		<td colspan="5">
+
+		</td>
+	</tr>
+	</table>
+</div>

@@ -1,0 +1,56 @@
+{% extends "review/home.html" %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block inner %}
+<h1>{% trans "Manage submissions" %}</h1>
+<hr class="mt-3 mb-2" />
+<div class="row mb-2 justify-content-between">
+	<div class="col-auto">
+		<a href="{% url 'manage_submission_create' event.pk %}" class="btn btn-primary">{% trans 'Create a submission...' %}</a>
+	</div>
+	<div class="col-auto">
+		<a href="{% url 'manage_submissions_as_table' event.pk %}" class="btn btn-primary">{% trans 'View submissions as a table' %}</a>
+	</div>
+</div>
+<div class="big-table border-bottom mb-3">
+<table class="table table-sm table-striped">
+<thead>
+	<th>{% trans "ID" %}</th>
+	<th style="width:50%">{% trans "Title" %}</th>
+	<th>{% trans "Type" %}</th>
+	<th>{% trans "Strand" %}</th>
+	<th>{% trans "Language" %}</th>
+</thead>
+{% for s in event.submissions.all|dictsort:"submission_type.pk" %}
+<tr>
+	<td>
+	{{ s.pk }}
+	</td>
+	<td><a href="{% url 'manage_submissions' event.pk s.pk %}">
+	{{ s.title|truncatechars:'50' }}
+	</a>
+	</td>
+	<td>
+	{% _ml s.submission_type 'text' LANGUAGE_CODE %}
+	</td>
+	<td>
+	{% _ml s.submission_strand 'text' LANGUAGE_CODE %}
+	</td>
+	<td>
+	{{ s.language|code:'lang' }}
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td class="text-center" colspan='5'>
+	{% trans "No submissions yet!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+
+
+{% endblock %}

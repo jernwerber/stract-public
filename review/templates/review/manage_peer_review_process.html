@@ -1,0 +1,50 @@
+{% extends "review/home.html" %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block inner %}
+<h1>{% trans "Manage peer review process" %}</h1>
+{% if process.nickname %}
+<h3>{{ process.nickname }} <small class="text-muted">(PID:{{ process.pk }})</small></h3>
+{% else %}
+<h3>Review process {{ process.pk }}</h3>
+{% endif %}
+<hr class="my-3" />
+
+<nav>
+  <ul class="nav nav-tabs nav-fill mb-3">
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk process.pk 'overview' %}" class="nav-link {{ tab|is_active_tab:'overview' }}">{% trans "Overview" %}</a>
+	</li>
+	<li class="nav-item justify-content-between">
+		<a href="{% url 'manage_peer_review' event.pk process.pk 'criteria' %}" class="nav-link {{ tab|is_active_tab:'criteria' }}">{% trans "Process criteria/verdicts" %}</a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk process.pk 'submissions' %}" class="nav-link  {{ tab|is_active_tab:'submissions' }}">{% trans "Submissions" %} <span class="badge badge-primary">{{ process.submissions.all.count }}</span></a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk process.pk 'assignments' %}" class="nav-link  {{ tab|is_active_tab:'assignments' }}">{% trans "Assignments" %}</a>
+	</li>
+
+
+</ul>
+</nav>
+{% block tab %}
+
+	{% if tab == 'overview' %}
+		{% include "review/manage_peer_review_process/overview_tab.html" %}	
+	{% elif tab == 'criteria' %}
+		{% include "review/manage_peer_review_process/evaluation_criteria_tab.html" %}
+	{% elif tab == 'submissions' %}
+		{% include "review/manage_peer_review_process/submissions_tab.html" %}	
+	{% elif tab == 'assignments' %}
+		{% include "review/manage_peer_review_process/assignments_tab.html" %}	
+	{% elif tab == '' %}
+		{% include "review/manage_peer_review.html" %}  
+	{% else %}
+	{% endif %}
+	
+{% endblock %}
+
+
+{% endblock %}

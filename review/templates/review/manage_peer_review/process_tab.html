@@ -1,0 +1,65 @@
+{% load i18n %}
+{% load review_extras %}
+
+<div class="btn-toolbar justify-content-between mb-4">
+	<div class="col-auto">
+	<h4>{% trans 'Create and manage review processes' %}</h4>
+	</div>
+	<div class="btn-group">
+		<a href="{% url 'create_review_process' event.pk %}" class="btn btn-outline-dark">{% trans "Create new review process" %}</a>
+	</div>
+</div>
+
+
+
+<table class="table table-sm mt-2">
+<thead>
+	<th>{% trans "PID" %}</th>
+	<th style="width:60%">{% trans "Process name" %}</th>
+	<th>{% trans "Number of submissions" %}</th>	
+	<th>{% trans "State" %}</th>
+</thead>
+{% for p in event.review.review_processes.all %}
+<tr>
+	<td>
+	{{ p.pk }}
+	</td>
+	<td><a href="{% url 'manage_peer_review' event_id=event.pk tab='overview' process_id=p.pk %}">
+	{% if p.nickname %}{{ p.nickname }}{% else %}Review Process (PID: {{p.pk}}){% endif %}
+	</a>
+	</td>
+	<td>
+	{{ p.submissions.count }}	
+	</td>
+	<td>
+	{% review_process_state_widget p %}
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan='4'>
+	{% trans "No review processes have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+<hr class="my-3" />
+<div class="alert alert-light">
+	<div class="row">
+		<div class="col-auto">
+		<p class="h1 display-3"><i class="fas fa-question-circle"></i></p>
+		</div>
+		<div class="col">
+		<h3>{% trans 'About review processes' %}</h3>
+		{% url 'manage_peer_review' event.pk 'criteria' as link %}
+		{% blocktrans %}
+		<p>Review processes are based on the set of review criteria, or a subset thereof, that have been added for this event. New criteria can be added on the <a href="{{ link }}">Criteria</a> tab. Submissions are connected to one or more review processes and assignments for reviewers are assigned within the process. Processes can be selectively accessible to reviewers and authors. This behaviour is controlled on a specific process' management page and is reflected, for each process, in the <strong>State</strong> column below.
+		<hr>
+		A review process can be in one of three states: <strong>closed</strong>, where neither the reviewers nor the submission authors can access the reviews; <strong>in progress</strong>, where the reviewers have access to their review assignments; and <strong>released</strong>, where authors can see the reviews that have been completed for their submissions. A process where reviewers are still able to submit reviews but authors are also able to see reviews is considered <strong>released</strong>.
+		<hr>
+		<strong>To manage a process, click on its name in the table above.</strong>
+		</p>
+		{% endblocktrans %}
+		</div>
+	</div>
+</div>

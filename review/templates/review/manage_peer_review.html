@@ -1,0 +1,48 @@
+{% extends 'review/home.html' %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block inner %}
+<h1>{% trans "Manage peer review" %}</h1>
+<hr class="my-3" />
+
+<nav>
+  <ul class="nav nav-tabs nav-fill mb-3">
+	<li class="nav-item justify-content-between">
+		<a href="{% url 'manage_peer_review' event.pk 'process' %}" class="nav-link {{ tab|is_active_tab:'process' }}">{% trans "Processes" %} <span class="badge badge-primary">{{ event.review.review_processes.all.count }}</span></a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk 'criteria' %}" class="nav-link  {{ tab|is_active_tab:'criteria' }}">{% trans "Criteria" %} <span class="badge badge-primary">{{ event.review.reviewcriteria_set.all.count }}</span></a>
+	</li>
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk 'verdicts' %}" class="nav-link  {{ tab|is_active_tab:'verdicts' }}">{% trans "Verdicts" %} <span class="badge badge-primary">{{ event.review.verdicts.all.count }}</span></a>
+	</li>	
+	<li class="nav-item">
+		<a href="{% url 'manage_peer_review' event.pk 'reviewers' %}" class="nav-link {{ tab|is_active_tab:'reviewers' }}">{% trans "Reviewers" %} <span class="badge badge-primary">{{ event.review.reviewers.all.count }}</span></a>
+	</li>
+
+</ul>
+</nav>
+
+{% block tab %}
+	{% if tab == 'process' %}
+		{% include "review/manage_peer_review/process_tab.html" %}  
+	{% elif tab == 'criteria' %}
+		{% include "review/manage_peer_review/criteria_tab.html" %}  
+	{% elif tab == 'reviewers' %}
+		{% include "review/manage_peer_review/reviewer_tab.html" %}
+	{% elif tab == 'reviewer_bulk_upload' %}
+		{% include "review/manage_peer_review/reviewer_bulk_upload.html" %}	
+	{% elif tab == 'criteria_edit' %}
+		{% include 'review/manage_peer_review/criteria_tab_edit.html' %}
+	{% elif tab == 'verdicts' %}
+		{% include 'review/manage_peer_review/verdicts_tab.html' %}
+	{% elif tab == 'verdict_edit' %}
+		{% include 'review/manage_peer_review/verdicts_tab_edit.html' %}
+	{% else %}
+	{% endif %}
+
+
+{% endblock %}
+
+{% endblock %}

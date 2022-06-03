@@ -1,0 +1,188 @@
+{% extends "review/index.html" %}
+{% load i18n %}
+{% load review_extras %}
+{% load static %}
+{% with get_current_language as LANGUAGE_CODE %}
+
+{% block title %}<title>{% _ml event 'short' LANGUAGE_CODE  %}</title>{% endblock %}
+
+{% block head %}
+	<style>
+		ul.list-group li, ul.list-group a { padding-top:6px; padding-bottom:6px }
+		div#main-content { min-height: 75vh; }
+
+		div.big-table {
+			max-height:55vh;
+			overflow-y:scroll;
+			overflow-x:hidden;
+		}
+
+		div#main-jumbo.collapse + div {
+			margin-top:57px;
+		}
+
+		div#main-jumbo.collapse.show + div {
+			margin-top:0;
+		}
+
+		.no-jumbo {
+			margin-top:60px;
+			}
+
+		div#main-jumbo.collapse.show +div i.btn-closed, div#main-jumbo.collapsing +div i.btn-closed {
+			display:none;
+		}
+
+		div#main-jumbo.collapse:not(.show) +div i.btn-open {
+			display:none;
+		}
+	</style>
+{% endblock %}
+
+{% block menu %}
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-white border-bottom">
+	<div class="container">
+	  <a class="navbar-brand" href="{% url 'eventpage' event.pk %}">{% _ml event "short" LANGUAGE_CODE %}</a>
+	 <span class="navbar-text">
+	{% if LANGUAGE_CODE|slice:"0:2" == 'en' %}
+		{% if event.start_date and event.end_date %}
+			{{ event.start_date|date:"F j" }}
+			to
+			{{ event.end_date|date:"j, Y" }}
+		{% else %}
+			{{ event.start_date|date:"F j, Y"}}
+		{% endif %}
+	{% endif %}
+		{% if LANGUAGE_CODE|slice:"0:2" == 'fr' %}
+			{% if event.start_date and event.end_date %}
+				le
+				{{ event.start_date|date:"j" }}
+				au
+				{{ event.end_date|date:"j F Y" }}
+			{% else %}
+				le
+				{{ event.start_date|date:"j F Y"}}
+			{% endif %}
+	{% endif %}
+    </span>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsMain" aria-controls="navbarsMain" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarsMain">
+		<ul class="navbar-nav ml-auto">
+		  <!--li class="nav-item active">
+			<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+		  </li-->
+		  <li class="nav-item pr-3 mr-3 border-right">
+			<a class="nav-link" href="{% _ml event.eventdetails 'website' LANGUAGE_CODE %}">{% trans "Info" %}</a>
+		  </li>
+		  {% if not request.user.is_authenticated %}
+		  <li class="nav-item">
+			<a class="nav-link" href="{% url 'register' event.pk %}">{% trans "Register" %}</a>
+		  </li>
+		  <li class="nav-item mr-5">
+			<a class="nav-link" href="{% url 'login_f' event.pk %}">{% trans "Login" %}</a>
+		  </li>
+		  {% else %}
+		  <li class="nav-item pr-3 border-right">
+			<span class="navbar-text"><small class="text-uppercase">{% trans 'Logged in as'%} </small><a href="{% url 'eventhome' event.pk %}">{{ request.user.first_name }}</a></span>
+		  </li>
+		  <li class="nav-item mr-5">
+			<a class="nav-link" href="{% url 'logout' event.pk %}">{% trans "Logout" %}</a>
+		  </li>
+		  {% endif %}
+		  <li class="nav-item">
+			<a class="btn btn-outline-dark" href="{% url 'set_lang' LANGUAGE_CODE %}" tabindex="-1">{{ LANGUAGE_CODE|get_other_language|upper }}</a>
+		  </li>
+		</ul>
+	  </div>
+	</div>
+</nav>
+{% endblock %}
+
+{% block jumbo %}
+	<div id="main-jumbo" class="jumbotron jumbotron-fluid pb-0 pt-0 mb-0 border-bottom collapse {% block jumbo-show %}show{% endblock %}" style="min-height:57px">
+		<div class="container">
+			<img src="{% _ml event.eventdetails 'event_banner' LANGUAGE_CODE 'url' %}" class="d-block ml-auto mr-auto img-fluid" style="max-height:350px" />
+		</div>
+	</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container px-4 pb-5 pt-2">
+		<a name="content-top"></a>
+		<div class="col-sm-10 offset-sm-1 col-lg-8 offset-lg-2">
+		{% block message_area %}
+			{% if messages %}
+				{% for m in messages %}
+				<div class="alert alert-info">
+					{{ m|safe }}
+				</div>
+				{% endfor %}
+			{% endif %}
+		{% endblock %}
+		{% block inner %}
+			{% if user|user_is_in_event:event.pk %}
+			<div class="row mb-4 justify-content-between">
+				<div class="col-auto">
+					<a class="btn btn-link justify-content-between" href="{% url 'eventhome' event.pk %}"><i class="fas fa-chevron-left"></i> {% trans 'Go to participant page' %}</a>
+				</div>
+				<div class="col-auto">
+					<a class="btn btn-link justify-content-between d-block" href="{% url 'logout' event.pk %}">{% trans 'Logout' %}</a>
+				</div>
+			</div>
+			{% endif %}
+			<h1>{% _ml event 'title' LANGUAGE_CODE %}</h1>
+			<h2>{% _ml event 'subtitle' LANGUAGE_CODE %}</h2>
+			<hr class="my-4" />
+			{% if not request.user.is_authenticated %}
+			<div class="row my-4 justify-content-center">
+				<div class="col-auto">
+					<a href="{% url 'login_f' event.pk %}">{% trans 'Login' %}</a>
+				</div>
+				<div class="col-auto">
+				 &mdash; {% trans 'or' %} &mdash;
+				</div>
+				<div class="col-auto">
+					<a href="{% url 'register' event.pk %}">{% trans 'Register' %}</a>
+				</div>
+			</div>
+			{% endif %}
+
+			{% autoescape off %}
+				{% _ml event.eventdetails "description" LANGUAGE_CODE %}
+			{% endautoescape %}
+		{% endblock %}
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block footer %}
+<footer class="bg-light text-dark my-auto border-top min-h-50">
+	<div class="container">
+		<div class="row mt-4 py-3">
+			<div class='col'>
+				{% autoescape off %}
+				{% _ml event.eventdetails 'footer' LANGUAGE_CODE %}
+				{% endautoescape %}
+			</div>
+		</div>
+
+		<!--div class="row mt-4 py-3 border-top bg-secondary text-light">
+					<div class="row">
+						<div class="col border-right pb-5">
+						</div>
+						<div class="col border-right">
+						</div>
+						<div class="col">
+						</div>
+					</div>
+		</div-->
+	</div>
+
+</footer>
+{% endblock %}
+
+{% endwith %}

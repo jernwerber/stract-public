@@ -1,0 +1,75 @@
+{% extends 'review/manage_info.html' %}
+{% load i18n %}
+{% load review_extras %}
+{% block tab %}
+<h5>{{ title }}</h5>
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th style="width:35%">{% trans "Text (English)" %}</th>
+		<th style="width:35%">{% trans "Text (French)" %}</th>
+		<th>&mdash;</th>
+	</tr>
+</thead>
+<tbody>
+{% for i in items %}
+<tr>
+	<td>
+		{{ i.pk }}
+	</td>
+	<td>
+		{{ i.text_en }}
+	<td>
+		{{ i.text_fr }}
+	</td>
+	<td>
+		<!--a class="btn btn-sm btn-outline-dark" href="{% url 'manage_peer_review' event_id=event.pk tab='verdict_edit' tab_id=i.pk %}"><i class="far fa-edit"></i></a-->
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan='4' class='text-center'>
+	{% trans "No" %} {{ type }}s {% trans "have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<div class="card">
+<div class="card-body">
+{% if form.errors %}
+<div class="alert alert-warning">
+{% for e in form.errors %}
+	{{ e.message }} <br />
+{% endfor %}
+{% endif %}
+<form method="POST" novalidate>
+{% csrf_token %}
+{% for field in form.hidden_fields %}
+{{ field }}
+{% endfor %}
+<div class="row">
+{% for field in form.visible_fields %}
+<div class="form-group col-6">
+	<strong>{{ field.label_tag }}</strong>
+	{{ field }}
+	{{ field.errors }}
+</div>
+{% endfor %}
+</div>
+<hr class="my-3">
+<div class="row justify-content-between">
+<div class="col-auto">
+<button type="reset" class="btn btn-dark">{% trans 'Clear form' %}</button>
+</div>
+<div class="col-auto">
+<button type="submit" class="btn btn-dark">{% trans "Add" %} {{ type }}</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,198 @@
+{% extends 'review/manage_info.html' %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block tab %}
+{% if form.errors %}
+<div class="col alert alert-warning">
+	{% for error in form.errors %}
+		{{ error.error_text }}
+	{% endfor %}
+</div>
+{% endif %}
+<form method='post' novalidate class="my-4">
+	{% csrf_token %}
+	<div class="row">
+				<div class="col-md-4 text-md-right">
+					<strong>{{ form.accepting_submissions.label }}</strong>
+					<p class="text-muted">{{ form.accepting_submissions.help_text }}</p>
+				</div>
+				<div class="col-md-2">
+					<div class="custom-control custom-switch">
+					{{ form.accepting_submissions }}
+					<label class="custom-control-label" for="{{ form.accepting_submissions.id_for_label }}">&nbsp;</label>
+					</div>
+				</div>
+		</div>
+		<div class="row">
+					<div class="col-md-4 text-md-right">
+						<label for="{{ form.max_submission_text.id_for_label }}"><strong>{{ form.max_submission_text.label }}</strong></label>
+						<p class="text-muted">{{ form.max_submission_text.help_text }}</p>
+					</div>
+					<div class="col-md-2">
+						{{ form.max_submission_text }}
+					</div>
+					<div class="col-md-4 text-md-right">
+						<label for="{{ form.max_submission_references.id_for_label }}"><strong>{{ form.fields.max_submission_references.label }}</strong></label>
+						<p class="text-muted">{{ form.fields.max_submission_references.help_text }}</p>
+					</div>
+					<div class="col-md-2">
+						{{ form.max_submission_references }}
+					</div>
+		</div>
+		<div class="row">
+					<div class="col-md-4 text-md-right">
+						<label for="{{ form.max_submissions.id_for_label }}"><strong>{{ form.max_submissions.label }}</strong></label>
+						<p class="text-muted">{{ form.max_submissions.help_text }}</p>
+					</div>
+					<div class="col-md-2">
+						{{ form.max_submissions }}
+					</div>
+					<div class="col-md-4 text-md-right">
+						<strong>{{ form.max_submissions_single_per_type.label }}</strong>
+						<p class="text-muted">{{ form.max_submissions_single_per_type.help_text }}</p>
+					</div>
+					<div class="col-md-2">
+						<div class="custom-control custom-switch">
+						{{ form.max_submissions_single_per_type }}
+						<label class="custom-control-label" for="{{ form.max_submissions_single_per_type.id_for_label }}">&nbsp;</label>
+						</div>
+					</div>
+		</div>
+		<hr class="mt-2 mb-4" />
+		<div class="row">
+			<div class="col-md-6 text-md-left">
+				<label for="{{ form.references_text_en.id_for_label }}"><strong>{{ form.references_text_en.label }}</strong></label>
+				<p class="text-muted">{{ form.references_text_en.help_text }}</p>
+				{{ form.references_text_en }}
+			</div>
+			<div class="col-md-6 text-md-left">
+				<label for="{{ form.references_text_fr.id_for_label }}"><strong>{{ form.references_text_fr.label }}</strong></label>
+				<p class="text-muted">{{ form.references_text_fr.help_text }}</p>
+				{{ form.references_text_fr }}
+			</div>
+		</div>
+		<hr class="mt-4 mb-4" />
+		<div class="row">
+			<div class="col-md-6 text-md-right">
+				<label for="{{ form.accepting_override.id_for_label }}"><strong>{{ form.accepting_override.label }}</strong></label>
+				<p class="text-muted">{{ form.accepting_override.help_text }}</p>
+			</div>
+			<div class="col overflow-auto" style="max-height:15em">
+				<table class="table table-sm table-striped">
+					<thead>
+						<tr>
+							<th style="width:85%" class="pl-4">{% trans 'Participant' %}</th>
+							<th>&mdash;</th>
+						</tr>
+					</thead>
+			{% for p in form.accepting_override %}
+			<tr>
+				<td class="pl-4">{{ p.choice_label }}</td>
+				<td><div class="custom-control custom-checkbox">{{ p.tag }}<label class="custom-control-label" for="{{ p.id_for_label }}"></label></div></td>
+			</tr>
+			{% endfor %}
+				</table>
+			</div>
+		</div>
+	<hr class="my-2">
+		<div class="row justify-content-end">
+			<div class="col-auto">
+				<button type="submit" class="btn btn-primary">Update settings</button>
+			</div>
+		</div>
+</form>
+
+<div class="card mb-4">
+<div class="card-header">
+	<div class="row justify-content-between">
+		<div class="col-auto align-self-center">
+			<h5 class="mb-0">{% trans "Submission strands" %}</h5>
+		</div>
+		<div class="col-auto">
+			<a href="{% url 'manage_submission_settings_items' event_id=event.pk item_type='strands' %}" class="btn btn-secondary">Add/modify...</a>
+		</div>
+	</div>
+</div>
+<div class="card-body">
+
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th style="width:35%">{% trans "Text (English)" %}</th>
+		<th style="width:35%">{% trans "Text (French)" %}</th>
+		<th>&mdash;</th>
+	</tr>
+</thead>
+{% for s in event.submission_strands.all %}
+<tr>
+	<td>
+		{{ s.pk }}
+	</td>
+	<td>
+		{{ s.text_en }}
+	<td>
+		{{ s.text_fr }}
+	</td>
+	<td>
+		<!--a class="btn btn-sm btn-outline-dark" href="{% url 'manage_peer_review' event_id=event.pk tab='verdict_edit' tab_id=s.pk %}"><i class="far fa-edit"></i></a-->
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan='4' class='text-center'>
+	{% trans "No submission strands have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+</div></div>
+
+<div class="card">
+	<div class="card-header">
+		<div class="row justify-content-between">
+			<div class="col-auto align-self-center">
+				<h5 class="mb-0">{% trans "Submission types" %}</h5>
+			</div>
+			<div class="col-auto">
+				<a href="{% url 'manage_submission_settings_items' event_id=event.pk item_type='types' %}" class="btn btn-secondary">Add/modify...</a>
+			</div>
+		</div>
+	</div>
+<div class="card-body">
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th style="width:35%">{% trans "Text (English)" %}</th>
+		<th style="width:35%">{% trans "Text (French)" %}</th>
+		<th>&mdash;</th>
+	</tr>
+</thead>
+{% for s in event.submission_types.all %}
+<tr>
+	<td>
+		{{ s.pk }}
+	</td>
+	<td>
+		{{ s.text_en }}
+	<td>
+		{{ s.text_fr }}
+	</td>
+	<td>
+		<!--a class="btn btn-sm btn-outline-dark" href="{% url 'manage_peer_review' event_id=event.pk tab='verdict_edit' tab_id=s.pk %}"><i class="far fa-edit"></i></a-->
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan='4' class='text-center'>
+	{% trans "No submission types have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+</div>
+
+{% endblock %}

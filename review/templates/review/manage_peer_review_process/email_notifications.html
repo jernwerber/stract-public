@@ -1,0 +1,36 @@
+{% extends 'review/manage_peer_review_process.html' %}
+{% load i18n review_extras %}
+
+{% block tab %}
+<h3>{% trans 'Notify submission authors' %}</h3>
+<p>{% blocktrans %}This form will send notification e-mails to the corresponding authors of submissions that have the specified final verdict. Final verdicts for submissions in this review process can be set on the <strong>Assignments</strong> tab above.{% endblocktrans %}</p>
+<form method="POST" novalidate>
+{% csrf_token %}
+{% for field in form.hidden_fields %}
+	{{ field }}
+{% endfor %}
+
+{% for field in form.visible_fields %}
+<div class="row mb-3 text-sm-right">
+	<div class="col-sm-6">
+		<strong>{{ field.label_tag }}</strong>
+		<p class="text-muted">{{ field.help_text }}</p>
+	</div>
+	<div class="col-sm-6">
+		{{ field }}
+	</div>
+</div>
+{% endfor %}
+<hr class='my-3' />
+<div class="row justify-content-end">
+		<button type="submit" class="btn btn-secondary align-bottom col-sm-3">{% trans 'Next' %} <i class="fas fa-angle-right"></i></button>
+</div>
+</form>
+
+
+{% endblock %}
+
+{% block script %}
+
+
+{% endblock %}

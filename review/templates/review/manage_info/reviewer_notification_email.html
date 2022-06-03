@@ -1,0 +1,31 @@
+{% load i18n review_extras %}**An English message follows
+
+Cher évaluateur,
+
+Le processus d’évaluation des soumissions pour {{ event_name_fr }} est maintenant en cours. Un compte a déjà été créé pour vous en utilisant l’addresse courriel ({{ email }}) comme nom d’utilisateur. Veuillez suivre le lien ci-dessous pour activer votre compte et votre mot de passe :
+
+{{ protocol}}://{{ domain }}{% url 'password_reset_confirm' uid=uid token=token event_id=event.pk %}
+
+Vous pouvez sélectionner la langue dans laquelle vous voulez faire votre évaluation (c.à.d., anglais ou français) en cliquant le bouton dans le coin supérieur droit. Nous vous demandons de bien vouloir terminer vos évaluations d’ici le 17 juin à 23h59. Notre équipe se réunira le lendemain pour finaliser le processus d'évaluation par les pairs et envoyer les évaluations aux auteurs.
+
+Comme il s'agit d'évaluations à l'aveugle, votre identité en tant qu'évaluateur ainsi que l'identité de l'auteur ou des auteurs d'une proposition seront supprimées. Si vous avez besoin d'éclaircissements sur le processus d'évaluation ou si vous éprouvez des difficultés techniques, n'hésitez pas à communiquer avec {{ contact_email }} afin que nous puissions résoudre rapidement le problème.
+
+Nous vous remercions à l'avance de votre temps et de votre soutien!
+
+L'équipe d’EducLang 2019
+
+***
+
+Dear reviewer,
+
+Peer reviewing of submissions to {{ event_name_en }} is now underway. An account has already been created for you using this e-mail address ({{ email }}) as your username. Please follow the link below to complete the activation of your account and to set your password:
+
+{{ protocol}}://{{ domain }}{% url 'password_reset_confirm' uid=uid token=token event_id=event.pk %}
+
+You can select the language in which you will conduct your reviews (i.e., English or French) by clicking the button at the top-right hand side of your screen. We ask that you please complete your reviews by 11:59 p.m. on June 17 at the latest. Our team will be meeting the next day to finalize the peer review process and send the reviews out to the authors.
+
+As these are blind reviews, your identity as a reviewer as well as the identity of the author(s) of a submission will be suppressed. Select the language in which you will conduct your reviews (i.e., English or French) by clicking the button at the top-right hand side of your screen. Should you require clarification on the review process or should you encounter any technical difficulties, please don’t hesitate to contact {{ contact_email }} so that we can resolve the issue in a timely manner.
+
+Thank you in advance for your time and support!
+
+EducLang 2019 Organizing Committee

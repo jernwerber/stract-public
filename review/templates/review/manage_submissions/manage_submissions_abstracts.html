@@ -1,0 +1,49 @@
+{% extends "review/event.html" %}
+{% load i18n review_extras %}
+
+{% block jumbo-show %}
+
+{% endblock %}
+{% block jumbo %}
+
+{% endblock %}
+{% block menu %}
+
+{% endblock %}
+{% block content %}
+<div class="container-fluid py-3">
+<table class="table table-striped">
+<thead>
+	<tr>
+		<th>ID</th>
+		<th>Title</th>
+		<th>All authors</th>
+		<th>First author affiliation</th>
+		<th>Type</th>
+		<th>Language</th>
+		<th>Strand</th>
+		<th>Keywords</th>
+		<th>Text</th>
+		<th>Verdict</th>
+	</tr>
+</thead>
+{% for submission in submissions %}
+	<tr>
+		<td>{{ submission.pk }}</td>
+		<td><a href="{% url 'manage_submissions' event_id=event.pk submission_id=submission.pk %}" target="about:blank">{{ submission.title }}</a></td>
+		<td>{{ submission.corresponding_author.participant.user.first_name }} {{ submission.corresponding_author.participant.user.last_name }}{% if submission.all_authors_t %}; {{ submission.all_authors_t }}{% endif %}
+		</td>
+		<td>{{ submission.corresponding_author.participant.affiliation_t }}</td>		
+		<td>{{ submission.submission_type|ml_text:LANGUAGE_CODE }}</td>
+		<td>{{ submission.language|code:'lang' }}</td>
+		<td>{{ submission.submission_strand|ml_text:LANGUAGE_CODE }}</td>
+		<td>{{ submission.keywords_t }}</td>
+		<td>{{ submission|get_submission_text|linebreaks }}</td>
+		<td>{{ submission|get_verdict_if_reviewed }}</td>
+	</tr>
+{% empty %}
+
+{% endfor %}
+</table>
+</div>
+{% endblock %}

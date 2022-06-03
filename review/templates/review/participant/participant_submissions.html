@@ -1,0 +1,47 @@
+{% extends "review/home.html" %}
+{% load i18n review_extras %}
+
+{% block inner %}
+<div class="row justify-content-left">
+	<div class="col-auto">
+		<h1 class='h2'>{% trans 'My submissions' %}</h1>
+	</div>
+	<div class="col-auto px-0">
+				<a href="{% url 'participant_submissions_create' event.pk %}" class="btn btn-primary"><i class="fas fa-plus-square"></i> {% trans "New submission" %}</a>
+	</div>
+</div>
+<table class="table table-sm mt-2">
+	<thead>
+		<tr>
+			<th style="width:40%">{% trans "Title" %}</th>
+			<th>{% trans "Type" %}</th>
+			<th style="width:40%">{% trans "Status" %}</th>
+		</tr>
+	</thead>
+	{% for submission in submissions %}
+		<tr>
+			<td><a href="
+				{% if submission.is_editable %}
+					{% url 'participant_submissions_edit' event.pk submission.pk %}
+				{% else %}
+					{% url 'participant_submission_details' event.pk submission.pk %}
+				{% endif %}
+				">{{ submission.title }}</a></td>
+			<td>{% _ml submission.submission_type 'text' LANGUAGE_CODE %}</td>
+			<td>{{ submission.submission_status|code:'status' }}
+			{% if submission.submission_status == 30 %}
+				{% for rp in submission.reviewprocesssubmissionverdict_set.all %}
+					{% if rp.process.is_released %}
+						&nbsp;<span class="badge badge-primary" style="word-break:break-word"><abbr title="{{ rp.verdict|ml_text:LANGUAGE_CODE }}">{{ rp.verdict|ml_text:LANGUAGE_CODE|truncatechars:25 }}</abbr></span>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+			</td>
+		</tr>
+	{% empty %}
+		<tr>
+			<td colspan='100' class="text-center">{% trans 'No submissions found!' %}</td>
+		</tr>
+	{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,92 @@
+{% load i18n %}
+{% load review_extras %}
+
+
+<!--div class="btn-toolbar justify-content-end">
+	<div class="btn-group">
+		<a href="#" class="btn btn-outline-dark">{% trans "Create new review process" %}</a>
+	</div>
+</div-->
+<div class="alert alert-light">
+	<div class="row">
+		<div class="col-auto">
+		<p class="h1 display-3"><i class="fas fa-question-circle"></i></p>
+		</div>
+		<div class="col">
+		<h3>{% trans 'About review criteria' %}</h3>
+		<p>These are the criteria that are available to be added to your review processes. You can choose to use some or all of these criteria, on a per-process basis. For example, if you have different criteria for a submission type, you might create a process that only uses workshop-specific criteria. Additional criteria can be added using the form at the bottom.</p>
+		</div>
+	</div>
+</div>
+
+<table class="table table-sm mt-2">
+<thead>
+	<tr>
+	<th>CID</th>
+	<th style="width:35%">{% trans "Text (English)" %}</th>
+	<th style="width:35%">{% trans "Text (French)" %}</th>	
+	<th>{% trans "Criteria type" %}</th>
+	<th>#</th>
+	<th></th>
+	</tr>
+</thead>
+{% for c in event.review.reviewcriteria_set.all %}
+<tr>
+	<td>
+		{{ c.pk }}
+	</td>
+	<td>
+		{{ c.text_en }}
+	</td>
+	<td>
+		{{ c.text_fr }}
+	</td>
+	<td>
+		{{ c.criteria_type|code:"criteria_type" }}	
+	</td>
+	<td>
+		<a class="btn btn-sm btn-outline-dark" href="{% url 'manage_peer_review' event_id=event.pk tab='criteria_edit' tab_id=c.pk %}"><i class="far fa-edit"></i></a>
+	</td>
+</tr>
+{% empty %}
+<tr>
+	<td colspan="5" class="text-center">
+		{% trans "No criteria have been created!" %}
+	</td>
+</tr>
+{% endfor %}
+</table>
+{% if form %}
+<div class="card">
+<div class="card-body">
+<h5>{% trans 'Create new criteria' %}</h5>
+{% if form.errors %}
+<div class="alert alert-warning">
+{% for e in form.errors %}
+	{{ e.message }} <br />
+{% endfor %}
+{% endif %}
+<form method="POST" novalidate>
+{% csrf_token %}
+<div class="row">
+{% for field in form.visible_fields %}
+<div class="form-group col-6">
+	{{ field.label_tag }}
+	{{ field }}
+	{{ field.errors }}
+</div>
+{% endfor %}
+</div>
+<hr class="my-3">
+<div class="row justify-content-between">
+<div class="col-auto">
+<button type="reset" class="btn btn-dark">{% trans 'Clear form' %}</button>
+</div>
+<div class="col-auto">
+<button type="submit" class="btn btn-dark">{% trans "Add criteria" %}</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+{% endif %}

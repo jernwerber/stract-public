@@ -1,0 +1,94 @@
+{% load i18n %}
+{% load review_extras %}
+
+	<div class='col'>
+	<h3 class="h5">{% trans "Submissions available for assignment" %}</h3>
+	<div class="big-table border-bottom mb-3">
+	<table class='table'>
+	<thead>
+		<tr>
+		<th>ID</th>
+		<th style="width:60%">{% trans 'Title' %}</th>
+		<th>{% trans 'Submission type' %}</th>
+		<th>{% trans 'Reviews' %}</th>
+		</tr>
+	</thead>
+	{% for s in process.submissions.all|dictsort:'submission_type.pk' %}
+	<tr>
+		<td>{{ s.pk }}</td>
+		<td><a href="{% url 'manage_submissions' event_id=event.pk submission_id=s.pk %}" target="_about:blank">{{ s.title }}</a></td>	
+		<td>{% _ml s.submission_type 'text' LANGUAGE_CODE %}</td>
+		<td>{{ s|count_for_process_complete:process.pk }} / {{ s|count_for_process_total:process.pk }}</td>
+	</tr>
+	{% empty %}
+	<tr>
+		<td colspan=4 class="text-center">
+		<em>{% trans "No submissions have been added to this process!" %}</em>
+		</td>
+	</tr>
+	{% endfor %}
+	</table>
+	</div>
+</div>
+
+
+
+<div class="card">
+<div class="card-header ">
+	<div class="row justify-content-between">
+		<div class="col-auto align-self-center">
+			<h3 class="h5 mb-0">Submissions not included</h3>
+		</div>
+		<div class="col-auto">
+		{% if mini_form %}
+			<form method="POST" novalidate>
+			{% csrf_token %}
+			<div class="input-group">
+			{{ mini_form.submission_type }}
+				<div class="input-group-append">
+					<button class="btn btn-secondary" type="submit">{% trans 'Add all of type...' %}</button>
+				</div>
+			</div>
+			</form>
+		{% endif %}
+		</div>
+	</div>
+</div>
+
+<div class="card-body big-table">
+{% if form %}
+<form method="POST" novalidate>
+
+{% csrf_token %}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+{% if form.submissions %}
+<div class="table-responsive-sm">
+	<table class="table">
+		<thead>
+			<tr>
+				<th style="width:60%">{% trans "Title" %}</th>
+				<th scope="col-auto">{% trans "Submission type" %}</th>
+				<th scope="col-auto"> - </th>
+			</tr>
+		</thead>
+	{% for s in form.submissions %}
+	<tr>
+		{{ s.choice_label|td_on:'::'|safe }}
+		<td>{{ s.tag }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+</div>
+
+{% endif %}
+
+</div>
+<div class="card-footer">
+<button type="submit" class="btn btn-dark">{% trans "Add checked submission(s)" %}</button>
+</div>
+{% endif %}
+</div>
+</form>

@@ -1,0 +1,87 @@
+{% extends 'review/manage_peer_review.html' %}
+{% load i18n %}
+{% load review_extras %}
+
+{% block tab %}
+<h2 class="h3 mb-3">{{ title }}</h2>
+<form method='POST' novalidate>
+{% for error in form.errors %}
+{{ error }}
+{% endfor %}
+{% csrf_token %}
+<div class="row mb-3">
+	<div class="col-4">
+	<label for="{{ form.nickname.name }}"><strong>{{ form.nickname.label }}</strong></label>
+	<p class="text-muted">{{ form.nickname.help_text }}</p>
+	</div>
+	<div class="col">
+	{{ form.nickname }}
+	</div>
+</div>
+<hr class="mb-4" />
+<div class="row  mb-3">
+	<div class="col-4">
+	<label for="{{ form.rubric.name }}"><strong>{{ form.rubric.label }}</strong></label>
+	<p class="text-muted">{{ form.rubric.help_text }}</p>
+	</div>
+	<div class="col">
+	
+	<table class="table table-sm table-striped">
+	<thead>
+		<tr>
+			<th style="width:45%">{% trans 'Text (English)' %}</th>
+			<th style="width:45%">{% trans 'Text (French)' %}</th>
+			<th>&mdash;</th>
+		</tr>
+	</thead>
+	{% for r in form.rubric %}
+	<tr>
+		{{ r.choice_label|td_on:'::'|safe }}
+		<td><div class="custom-control custom-checkbox">{{ r.tag }}<label class="custom-control-label" for="{{r.id_for_label}}"></label></div></td>
+	</tr>
+	{% empty %}
+		<em>{% trans "No criteria have been added to this event!" %}</em>
+	{% endfor %}
+	
+	</table>
+	</div>
+</div>
+<hr class="mb-4" />
+<div class="row mb-3">
+	<div class="col-4">
+	<label for="{{ form.verdicts.name }}"><strong>{{ form.verdicts.label }}</strong></label>
+	<p class="text-muted">{{ form.verdicts.help_text }}</p>
+	</div>
+	<div class="col">
+	
+	<table class="table table-sm table-striped">
+	<thead>
+		<tr>
+			<th style="width:45%">{% trans 'Text (English)' %}</th>
+			<th style="width:45%">{% trans 'Text (French)' %}</th>
+			<th>&mdash;</th>
+		</tr>
+	</thead>
+	{% for v in form.verdicts %}
+	<tr>
+		{{ v.choice_label|td_on:'::'|safe }}
+		<td><div class="custom-control custom-checkbox">{{ v.tag }}<label class="custom-control-label" for="{{v.id_for_label}}"></label></td>
+	</tr>
+	{% empty %}
+		<em>{% trans "No verdicts have been added to this event!" %}</em>
+	{% endfor %}
+	
+	</table>
+	</div>
+</div>
+<hr class="mb-3" />
+<div class="row justify-content-between">
+<div class="col-auto">
+	<button type="reset" class="btn btn-dark">{% trans 'Clear form' %}</button>
+</div>
+<div class="col-auto">
+	<button type="submit" class="btn btn-dark">{{ title }}</button>
+</div>
+
+</form>
+{% endblock %}
